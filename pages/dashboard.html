@@ -17,6 +17,11 @@
 </head>
 
 <body>
+    <!-- Full Page Loader for Tab Switches -->
+    <div id="dash-loader" class="dash-loader">
+        <div class="spinner"></div>
+    </div>
+
     <script>
         if (localStorage.getItem('furniture-theme') === 'light') {
             document.body.classList.add('light-theme');
@@ -37,14 +42,23 @@
                 <i class="fa-solid fa-sun" id="theme-icon"></i>
             </button>
             <a href="../index.html" class="btn-exit">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i> Exit Dashboard
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Exit Dashboard</span>
             </a>
+            <button id="menu-toggle" class="menu-toggle" aria-label="Open Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </header>
 
     <!-- Sidebar Navigation -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
     <aside class="dash-sidebar">
-        <span class="nav-label">Main Menu</span>
+        <div class="sidebar-mobile-header">
+            <span class="nav-label">Main Menu</span>
+            <button id="close-sidebar" class="close-sidebar" aria-label="Close Menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
         <ul class="dash-nav" id="sidebar-nav">
             <li class="dash-nav-item active" data-target="overview">
                 <i class="fa-solid fa-house"></i> <span>Overview</span>
@@ -66,11 +80,8 @@
             </li>
         </ul>
 
-        <span class="nav-label">Preferences</span>
         <ul class="dash-nav">
-            <li class="dash-nav-item" data-target="settings">
-                <i class="fa-solid fa-gear"></i> <span>Settings</span>
-            </li>
+            <!-- Settings Removed per user request -->
         </ul>
     </aside>
 
@@ -79,10 +90,16 @@
 
         <!-- 1. OVERVIEW -->
         <section id="overview" class="tab-pane active">
-            <div class="section-header">
+            <div class="section-header" style="justify-content: space-between;">
                 <div>
                     <h3>Dashboard Overview</h3>
                     <p>Welcome back, Admin. Here's what's happening today.</p>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <button class="btn-send"
+                        style="background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-light);"
+                        onclick="window.location.href='./error.html'">View Report</button>
+                    <button class="btn-send" onclick="window.location.href='./error.html'">Export Data</button>
                 </div>
             </div>
 
@@ -125,7 +142,6 @@
                 <div class="chart-card">
                     <div class="chart-header">
                         <span class="chart-title">Revenue Overview (Weekly)</span>
-                        <i class="fa-solid fa-ellipsis-vertical" style="color: var(--text-muted); cursor: pointer;"></i>
                     </div>
                     <div class="chart-container">
                         <canvas id="overviewLineChart"></canvas>
@@ -134,7 +150,6 @@
                 <div class="chart-card">
                     <div class="chart-header">
                         <span class="chart-title">Top Selling Categories</span>
-                        <i class="fa-solid fa-filter" style="color: var(--text-muted); cursor: pointer;"></i>
                     </div>
                     <div class="chart-container pie">
                         <canvas id="overviewDoughnutChart"></canvas>
@@ -166,59 +181,54 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>#ORD-8942</td>
-                            <td>
-                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=1" alt="avatar"
-                                        class="user-avatar"> Sarah Jenkins</div>
+                            <td data-label="Order ID">#ORD-8942</td>
+                            <td data-label="Customer">
+                                <div class="user-cell">Sarah Jenkins</div>
                             </td>
-                            <td>Emerald Velvet Sofa</td>
-                            <td>Oct 12, 2026</td>
-                            <td>$1,299.00</td>
-                            <td><span class="badge completed">Delivered</span></td>
+                            <td data-label="Product">Emerald Velvet Sofa</td>
+                            <td data-label="Date">Oct 12, 2026</td>
+                            <td data-label="Amount">$1,299.00</td>
+                            <td data-label="Status"><span class="badge completed">Delivered</span></td>
                         </tr>
                         <tr>
-                            <td>#ORD-8941</td>
-                            <td>
-                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=2" alt="avatar"
-                                        class="user-avatar"> Michael Chen</div>
+                            <td data-label="Order ID">#ORD-8941</td>
+                            <td data-label="Customer">
+                                <div class="user-cell">Michael Chen</div>
                             </td>
-                            <td>Modern Lounge Chair</td>
-                            <td>Oct 12, 2026</td>
-                            <td>$499.00</td>
-                            <td><span class="badge pending">Processing</span></td>
+                            <td data-label="Product">Modern Lounge Chair</td>
+                            <td data-label="Date">Oct 12, 2026</td>
+                            <td data-label="Amount">$499.00</td>
+                            <td data-label="Status"><span class="badge pending">Processing</span></td>
                         </tr>
                         <tr>
-                            <td>#ORD-8940</td>
-                            <td>
-                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=3" alt="avatar"
-                                        class="user-avatar"> Emily Davis</div>
+                            <td data-label="Order ID">#ORD-8940</td>
+                            <td data-label="Customer">
+                                <div class="user-cell">Emily Davis</div>
                             </td>
-                            <td>Oak Dining Table Set</td>
-                            <td>Oct 11, 2026</td>
-                            <td>$2,150.00</td>
-                            <td><span class="badge pending">Shipped</span></td>
+                            <td data-label="Product">Oak Dining Table Set</td>
+                            <td data-label="Date">Oct 11, 2026</td>
+                            <td data-label="Amount">$2,150.00</td>
+                            <td data-label="Status"><span class="badge pending">Shipped</span></td>
                         </tr>
                         <tr>
-                            <td>#ORD-8939</td>
-                            <td>
-                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=4" alt="avatar"
-                                        class="user-avatar"> Robert Wilson</div>
+                            <td data-label="Order ID">#ORD-8939</td>
+                            <td data-label="Customer">
+                                <div class="user-cell">Robert Wilson</div>
                             </td>
-                            <td>Brass Floor Lamp</td>
-                            <td>Oct 10, 2026</td>
-                            <td>$120.00</td>
-                            <td><span class="badge cancelled">Cancelled</span></td>
+                            <td data-label="Product">Brass Floor Lamp</td>
+                            <td data-label="Date">Oct 10, 2026</td>
+                            <td data-label="Amount">$120.00</td>
+                            <td data-label="Status"><span class="badge cancelled">Cancelled</span></td>
                         </tr>
                         <tr>
-                            <td>#ORD-8938</td>
-                            <td>
-                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=5" alt="avatar"
-                                        class="user-avatar"> Jessica Taylor</div>
+                            <td data-label="Order ID">#ORD-8938</td>
+                            <td data-label="Customer">
+                                <div class="user-cell">Jessica Taylor</div>
                             </td>
-                            <td>Mid-Century Platform Bed</td>
-                            <td>Oct 09, 2026</td>
-                            <td>$1,899.00</td>
-                            <td><span class="badge completed">Delivered</span></td>
+                            <td data-label="Product">Mid-Century Platform Bed</td>
+                            <td data-label="Date">Oct 09, 2026</td>
+                            <td data-label="Amount">$1,899.00</td>
+                            <td data-label="Status"><span class="badge completed">Delivered</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -266,24 +276,22 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=1" alt="avatar"
-                                        class="user-avatar"> Sarah Jenkins</div>
+                            <td data-label="User Name">
+                                <div class="user-cell">Sarah Jenkins</div>
                             </td>
-                            <td>sarah.j@example.com</td>
-                            <td>New York, NY</td>
-                            <td>Jan 15, 2025</td>
-                            <td>$4,520.00</td>
+                            <td data-label="Email">sarah.j@example.com</td>
+                            <td data-label="Location">New York, NY</td>
+                            <td data-label="Join Date">Jan 15, 2025</td>
+                            <td data-label="Total Spent">$4,520.00</td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=2" alt="avatar"
-                                        class="user-avatar"> Michael Chen</div>
+                            <td data-label="User Name">
+                                <div class="user-cell">Michael Chen</div>
                             </td>
-                            <td>m.chen99@example.com</td>
-                            <td>San Francisco, CA</td>
-                            <td>Mar 22, 2026</td>
-                            <td>$890.00</td>
+                            <td data-label="Email">m.chen99@example.com</td>
+                            <td data-label="Location">San Francisco, CA</td>
+                            <td data-label="Join Date">Mar 22, 2026</td>
+                            <td data-label="Total Spent">$890.00</td>
                         </tr>
                     </tbody>
                 </table>
@@ -348,65 +356,40 @@
             <div class="messages-layout">
                 <!-- Sidebar Threads -->
                 <div class="msg-sidebar">
-                    <div class="msg-header">
-                        <input type="text" id="msgSearch" name="msgSearch" placeholder="Search messages..."
-                            autocomplete="off">
-                    </div>
                     <div class="msg-list">
                         <div class="msg-thread active">
                             <div class="msg-thread-top">
                                 <h5>Emily Davis</h5>
                                 <span>10:42 AM</span>
                             </div>
-                            <p>Hi, I was wondering about the shipping time...</p>
+                            <p>Order #ORD-8940</p>
                         </div>
                         <div class="msg-thread">
                             <div class="msg-thread-top">
                                 <h5>Michael Chen</h5>
                                 <span>Yesterday</span>
                             </div>
-                            <p>Thank you! The lounge chair fits perfectly.</p>
+                            <p>Order #ORD-8941</p>
                         </div>
                         <div class="msg-thread">
                             <div class="msg-thread-top">
                                 <h5>Robert Wilson</h5>
                                 <span>Monday</span>
                             </div>
-                            <p>I need to cancel my order #ORD-8939 please.</p>
+                            <p>Order #ORD-8939</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Active Chat -->
-                <div class="msg-content">
-                    <div class="chat-header">
-                        <img src="https://i.pravatar.cc/100?img=3" alt="avatar" class="user-avatar">
-                        <div>
-                            <h4 style="font-size: 1rem;">Emily Davis</h4>
-                            <span style="font-size: 0.8rem; color: var(--success);"><i class="fa-solid fa-circle"></i>
-                                Online</span>
-                        </div>
-                    </div>
-
-                    <div class="chat-history">
-                        <div class="bubble received">
-                            Hello Admin! I ordered the Oak Dining Table Set yesterday. Could you tell me the estimated
-                            shipping time to Los Angeles?
-                        </div>
-                        <div class="bubble sent">
-                            Hi Emily! Thank you for your purchase. Standard freight to LA typically takes 5-7 business
-                            days. You will receive a tracking link via email once it leaves our warehouse.
-                        </div>
-                        <div class="bubble received">
-                            That's great. Is assembly required for the table?
-                        </div>
-                    </div>
-
-                    <!-- User Request: Reply box with fixed length and width -->
-                    <div class="reply-area">
-                        <textarea id="replyMsg" name="replyMsg" class="reply-box"
-                            placeholder="Type your reply here..."></textarea>
-                        <button class="btn-send"><i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Send
+                <div class="msg-content" style="padding: 20px; display: flex; flex-direction: column;">
+                    <h4 id="reply-title" style="margin-bottom: 20px;">Universal Reply</h4>
+                    <textarea id="replyMsg" name="replyMsg" class="reply-box"
+                        style="flex: 1; min-height: 200px; resize: none;"
+                        placeholder="Type your reply to selected conversation..."></textarea>
+                    <div style="margin-top: 15px; text-align: right;">
+                        <button class="btn-send" id="sendReplyBtn"><i class="fa-solid fa-paper-plane"
+                                style="margin-right: 8px;"></i> Send
                             Reply</button>
                     </div>
                 </div>
@@ -458,51 +441,34 @@
                         </div>
                     </div>
 
-                    <div class="progress-item">
-                        <div class="progress-header">
-                            <span>Lighting & Decor</span>
-                            <span class="progress-value">15% Stocked (Reorder Required)</span>
+                    <div class="progress-item"
+                        style="margin-top: 20px; padding: 20px; background: var(--input-bg); border-radius: 8px; border: 1px solid var(--border-light);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div>
+                                <h4 style="margin: 0; font-size: 1.1rem;">Furniture Accessories</h4>
+                                <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: var(--text-muted);">Minor
+                                    components and hardware.</p>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="btn-send"
+                                    style="background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-light); padding: 8px 15px; font-size: 0.85rem;"
+                                    onclick="window.location.href='./error.html'">Audit</button>
+                                <button class="btn-send" style="padding: 8px 15px; font-size: 0.85rem;"
+                                    onclick="window.location.href='./error.html'">Reorder</button>
+                            </div>
                         </div>
-                        <div class="progress-track">
-                            <div class="progress-fill" style="width: 15%; background: var(--danger);"></div>
+                        <div class="progress-header">
+                            <span>Current Stock Volume</span>
+                            <span class="progress-value" style="font-weight: 700; color: var(--info);">72%
+                                Capacity</span>
+                        </div>
+                        <div class="progress-track" style="height: 12px; margin-top: 10px;">
+                            <div class="progress-fill" style="width: 72%; background: var(--info);"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- 7. SETTINGS -->
-        <section id="settings" class="tab-pane">
-            <div class="section-header">
-                <div>
-                    <h3>Dashboard Settings</h3>
-                    <p>Manage store preferences, notifications, and permissions.</p>
-                </div>
-            </div>
-
-            <form class="settings-form">
-                <div class="form-group">
-                    <label for="storeName">Store Name</label>
-                    <input type="text" id="storeName" value="FurniStyle Premium">
-                </div>
-                <div class="form-group">
-                    <label for="adminEmail">Administrator Email</label>
-                    <input type="email" id="adminEmail" value="admin@stackly.auto">
-                </div>
-                <div class="form-group">
-                    <label for="currency">Default Currency</label>
-                    <select id="currency">
-                        <option value="usd">USD ($)</option>
-                        <option value="eur">EUR (€)</option>
-                        <option value="gbp">GBP (£)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="taxRate">Global Tax Rate (%)</label>
-                    <input type="number" id="taxRate" value="8.5" step="0.1">
-                </div>
-                <button type="button" class="btn-save">Save Changes</button>
-            </form>
         </section>
 
     </main>
@@ -533,22 +499,99 @@
             updateChartsTheme();
         });
 
+        // --- Sidebar Toggle ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.querySelector('.dash-sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const closeSidebarBtn = document.getElementById('close-sidebar');
+
+        function closeSidebar() {
+            if (sidebar) sidebar.classList.remove('show');
+            if (overlay) overlay.classList.remove('show');
+        }
+
+        if (menuToggle && sidebar) {
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.add('show');
+                if (overlay) overlay.classList.add('show');
+            });
+        }
+
+        if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+
         // --- Sidebar Tab Navigation ---
         const navItems = document.querySelectorAll('.dash-nav-item');
         const tabPanes = document.querySelectorAll('.tab-pane');
 
         navItems.forEach(item => {
             item.addEventListener('click', () => {
-                // Remove active from all
-                navItems.forEach(nav => nav.classList.remove('active'));
-                tabPanes.forEach(pane => pane.classList.remove('active'));
+                closeSidebar();
 
-                // Add active to clicked target
-                item.classList.add('active');
-                const targetId = item.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
+                const dashLoader = document.getElementById('dash-loader');
+
+                if (dashLoader) {
+                    dashLoader.classList.add('active');
+
+                    setTimeout(() => {
+                        // Remove active from all
+                        navItems.forEach(nav => nav.classList.remove('active'));
+                        tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                        // Add active to clicked target
+                        item.classList.add('active');
+                        const targetId = item.getAttribute('data-target');
+                        document.getElementById(targetId).classList.add('active');
+
+                        dashLoader.classList.remove('active');
+                    }, 500); // 500ms loading effect
+                } else {
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    item.classList.add('active');
+                    const targetId = item.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                }
             });
         });
+
+        // --- Messages Reply Functionality ---
+        const msgThreads = document.querySelectorAll('.msg-thread');
+        const replyTitle = document.getElementById('reply-title');
+        const replyMsg = document.getElementById('replyMsg');
+        const sendReplyBtn = document.getElementById('sendReplyBtn');
+
+        if (msgThreads.length > 0 && replyTitle && replyMsg && sendReplyBtn) {
+            function updateReplyTitle(thread) {
+                if (thread) {
+                    const userName = thread.querySelector('h5').innerText;
+                    const orderText = thread.querySelector('p').innerText;
+                    replyTitle.innerText = `Reply to ${userName} (${orderText})`;
+                }
+            }
+
+            // Set initial title
+            updateReplyTitle(document.querySelector('.msg-thread.active'));
+
+            msgThreads.forEach(thread => {
+                thread.style.cursor = 'pointer'; // Ensure it's clickable structurally
+                thread.addEventListener('click', () => {
+                    msgThreads.forEach(t => t.classList.remove('active'));
+                    thread.classList.add('active');
+                    updateReplyTitle(thread);
+                    replyMsg.value = ''; // Optional: Clear input when switching threads
+                });
+            });
+
+            sendReplyBtn.addEventListener('click', () => {
+                const messageText = replyMsg.value.trim();
+                if (messageText === '') {
+                    alert('Please type a reply before sending.');
+                } else {
+                    window.location.href = './error.html';
+                }
+            });
+        }
 
         // --- Chart.js Initializations ---
         // Global defaults for dark theme style matches
