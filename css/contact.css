@@ -44,27 +44,53 @@
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 50px;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
     align-items: start;
 }
 
-/* --- Left: Contact Form --- */
-.contact-form-wrapper {
+.contact-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* --- Info Blocks & Hover FX --- */
+.info-block {
     background: var(--bg-card);
     border: 1px solid var(--border-light);
     border-radius: 16px;
     padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Premium Hover FX */
 }
 
-body.light-theme .contact-form-wrapper {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+body.light-theme .info-block {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+}
+
+.info-block:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    border-color: rgba(13, 148, 136, 0.3);
+}
+
+body.light-theme .info-block:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.info-block h3 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .contact-form-wrapper h3 {
     font-size: 1.8rem;
     margin-bottom: 10px;
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 .form-subtext {
@@ -73,6 +99,7 @@ body.light-theme .contact-form-wrapper {
     color: var(--text-muted);
 }
 
+/* --- Form Fields --- */
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -98,14 +125,6 @@ body.light-theme .contact-form-wrapper {
     color: var(--error-color);
 }
 
-.opt {
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    text-transform: none;
-    font-weight: 400;
-    margin-left: 4px;
-}
-
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -118,14 +137,22 @@ body.light-theme .contact-form-wrapper {
     font-family: var(--font-main);
     font-size: 0.95rem;
     outline: none;
-    transition: var(--transition);
+    transition: all 0.3s ease;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: rgba(13, 148, 136, 0.5);
+    background: rgba(13, 148, 136, 0.02);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: var(--accent-teal);
-    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+    background: var(--bg-rich);
+    box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15);
 }
 
 .form-group input.input-error,
@@ -140,7 +167,7 @@ body.light-theme .contact-form-wrapper {
     opacity: 0.6;
 }
 
-/* Select Styling */
+/* Select Styling (Upgraded) */
 .select-wrapper {
     position: relative;
     width: 100%;
@@ -153,6 +180,12 @@ body.light-theme .contact-form-wrapper {
     padding-right: 40px;
 }
 
+.select-wrapper select option {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    padding: 10px;
+}
+
 .select-icon {
     position: absolute;
     right: 16px;
@@ -160,6 +193,11 @@ body.light-theme .contact-form-wrapper {
     transform: translateY(-50%);
     color: var(--text-muted);
     pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.select-wrapper:hover .select-icon {
+    color: var(--accent-teal);
 }
 
 .select-wrapper:focus-within .select-icon {
@@ -181,37 +219,15 @@ body.light-theme .contact-form-wrapper {
     margin-top: -4px;
 }
 
-/* --- Right: Contact Information --- */
-.contact-info-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.info-block {
-    background: var(--bg-card);
-    border: 1px solid var(--border-light);
-    border-radius: 16px;
+/* --- Interactive Map Image (Left Column) --- */
+.map-block {
     padding: 30px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-body.light-theme .info-block {
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-}
-
-.info-block h3 {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border-light);
-}
-
-/* Interactive Map Image */
 .hq-address {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: var(--text-main);
 }
 
@@ -224,60 +240,61 @@ body.light-theme .info-block {
     display: block;
     position: relative;
     width: 100%;
-    height: 180px;
+    height: 400px; /* Big enough to cover empty space */
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
     border: 1px solid var(--border-light);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .map-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .map-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(15, 23, 42, 0.6);
+    background: rgba(15, 23, 42, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     opacity: 0;
     transition: all 0.4s ease;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(3px);
 }
 
 .map-overlay span {
     color: white;
     font-weight: 600;
     letter-spacing: 0.5px;
-    font-size: 0.95rem;
-    transform: translateY(10px);
-    transition: transform 0.4s ease;
+    font-size: 1.05rem;
+    transform: translateY(15px);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .map-pin {
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    height: 55px;
     background: var(--accent-teal);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.2rem;
-    box-shadow: 0 5px 15px rgba(13, 148, 136, 0.5);
-    transform: translateY(10px) scale(0.9);
-    transition: all 0.4s ease;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 20px rgba(13, 148, 136, 0.6);
+    transform: translateY(15px) scale(0.8);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .map-image-link:hover .map-img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .map-image-link:hover .map-overlay {
@@ -287,6 +304,13 @@ body.light-theme .info-block {
 .map-image-link:hover .map-pin,
 .map-image-link:hover .map-overlay span {
     transform: translateY(0) scale(1);
+}
+
+/* --- Right: Contact Information --- */
+.contact-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 /* Regional Branches */
@@ -301,6 +325,12 @@ body.light-theme .info-block {
     padding: 20px;
     border-radius: 10px;
     border: 1px solid var(--border-light);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.branch-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(13, 148, 136, 0.4);
 }
 
 .branch-card h4 {
@@ -323,30 +353,44 @@ body.light-theme .info-block {
     opacity: 0.8;
 }
 
-/* Detailed Contact Lists */
+/* Detailed Contact Lists (Normal Text per request) */
 .detailed-contact ul {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .detailed-contact li {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 18px;
+    padding: 10px;
+    border-radius: 12px;
+    transition: background 0.3s ease;
+}
+
+.detailed-contact li:hover {
+    background: rgba(13, 148, 136, 0.05);
 }
 
 .contact-icon {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     background: rgba(13, 148, 136, 0.1);
     color: var(--accent-teal);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     flex-shrink: 0;
+    transition: all 0.4s ease;
+}
+
+.detailed-contact li:hover .contact-icon {
+    background: var(--accent-teal);
+    color: white;
+    transform: scale(1.1);
 }
 
 .contact-text {
@@ -359,16 +403,17 @@ body.light-theme .info-block {
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
-.contact-text a {
-    font-size: 1.05rem;
+.contact-text .contact-value {
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-main);
+    transition: color 0.3s ease;
 }
 
-.contact-text a:hover {
+.detailed-contact li:hover .contact-value {
     color: var(--accent-teal);
 }
 
@@ -383,27 +428,28 @@ body.light-theme .info-block {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 20px;
+    padding: 14px 20px;
     background: var(--input-bg);
     border: 1px solid var(--border-light);
     border-radius: 8px;
     color: var(--text-main);
     font-weight: 600;
     font-size: 0.95rem;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .social-btn i {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--accent-teal);
-    transition: var(--transition);
+    transition: color 0.4s ease;
 }
 
 .social-btn:hover {
     background: var(--accent-teal);
     border-color: var(--accent-teal);
     color: white;
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(13, 148, 136, 0.3);
 }
 
 .social-btn:hover i {
@@ -440,6 +486,10 @@ body.light-theme .info-block {
     .contact-form-wrapper {
         padding: 35px 30px;
     }
+    
+    .map-image-link {
+        height: 350px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -462,6 +512,10 @@ body.light-theme .info-block {
 
     .branch-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .map-image-link {
+        height: 300px;
     }
 }
 
@@ -488,5 +542,9 @@ body.light-theme .info-block {
 
     .expanded-socials {
         grid-template-columns: 1fr;
+    }
+    
+    .map-image-link {
+        height: 250px;
     }
 }

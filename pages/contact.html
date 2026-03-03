@@ -33,7 +33,7 @@
 
     <div id="contact-toast" class="toast">
         <div class="toast-icon"><i class="fa-solid fa-check"></i></div>
-        <div class="toast-text">Message sent successfully! We'll be in touch.</div>
+        <div class="toast-text">Message sent successfully! Redirecting...</div>
     </div>
 
     <button id="scrollToTopBtn" aria-label="Scroll to top">
@@ -103,73 +103,76 @@
         <section class="contact-content-section container fade-in-up">
             <div class="contact-grid">
                 
-                <div class="contact-form-wrapper">
-                    <h3>Send us a Message</h3>
-                    <p class="form-subtext">Fill out the form below and a furnishing expert will reply within 24 hours.</p>
+                <div class="contact-left-col">
                     
-                    <form id="contactForm" novalidate>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="c-name">Full Name <span class="req">*</span></label>
-                                <input type="text" id="c-name" placeholder="John Doe" autocomplete="name">
-                                <span class="error-msg" id="err-name"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="c-email">Email Address <span class="req">*</span></label>
-                                <input type="email" id="c-email" placeholder="john@example.com" autocomplete="email">
-                                <span class="error-msg" id="err-email"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="c-phone">Phone Number <span class="opt">(Optional)</span></label>
-                                <input type="tel" id="c-phone" placeholder="+1 (555) 000-0000" autocomplete="tel">
-                                <span class="error-msg" id="err-phone"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="c-subject">Subject <span class="req">*</span></label>
-                                <div class="select-wrapper">
-                                    <select id="c-subject">
-                                        <option value="" disabled selected>Select an inquiry type</option>
-                                        <option value="sales">Sales & Product Info</option>
-                                        <option value="support">Order Tracking & Support</option>
-                                        <option value="design">Interior Design Consultation</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                    <i class="fa-solid fa-chevron-down select-icon"></i>
+                    <div class="contact-form-wrapper info-block">
+                        <h3>Send us a Message</h3>
+                        <p class="form-subtext">Fill out the form below and a furnishing expert will reply within 24 hours.</p>
+                        
+                        <form id="contactForm" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="c-name">Full Name <span class="req">*</span></label>
+                                    <input type="text" id="c-name" placeholder="John Doe" autocomplete="name">
+                                    <span class="error-msg" id="err-name"></span>
                                 </div>
-                                <span class="error-msg" id="err-subject"></span>
+                                <div class="form-group">
+                                    <label for="c-email">Email Address <span class="req">*</span></label>
+                                    <input type="email" id="c-email" placeholder="john@example.com" autocomplete="email">
+                                    <span class="error-msg" id="err-email"></span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="c-message">Your Message <span class="req">*</span></label>
-                            <textarea id="c-message" placeholder="How can we help you create your perfect space?" spellcheck="false"></textarea>
-                            <span class="error-msg" id="err-message"></span>
-                        </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="c-phone">Phone Number</label>
+                                    <input type="tel" id="c-phone" placeholder="10-digit number" autocomplete="tel" inputmode="numeric" maxlength="10">
+                                    <span class="error-msg" id="err-phone"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="c-subject">Subject <span class="req">*</span></label>
+                                    <div class="select-wrapper">
+                                        <select id="c-subject">
+                                            <option value="" disabled selected>Select an inquiry type</option>
+                                            <option value="sales">Sales & Product Info</option>
+                                            <option value="support">Order Tracking & Support</option>
+                                            <option value="design">Interior Design Consultation</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <i class="fa-solid fa-chevron-down select-icon"></i>
+                                    </div>
+                                    <span class="error-msg" id="err-subject"></span>
+                                </div>
+                            </div>
 
-                        <button type="submit" class="btn btn-primary full-width" id="submitBtn">
-                            Send Message <i class="fa-solid fa-paper-plane" style="margin-left: 5px;"></i>
-                        </button>
-                    </form>
-                </div>
+                            <div class="form-group">
+                                <label for="c-message">Your Message <span class="req">*</span></label>
+                                <textarea id="c-message" placeholder="How can we help you create your perfect space?" spellcheck="false"></textarea>
+                                <span class="error-msg" id="err-message"></span>
+                            </div>
 
-                <div class="contact-info-wrapper">
-                    
-                    <div class="info-block">
+                            <button type="submit" class="btn btn-primary full-width" id="submitBtn">
+                                Send Message <i class="fa-solid fa-paper-plane" style="margin-left: 5px;"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="info-block map-block">
                         <h3>Global Headquarters</h3>
                         <p class="hq-address"><i class="fa-solid fa-location-dot"></i> Stackly Headquarters, Los Angeles, CA</p>
                         
                         <a href="https://maps.app.goo.gl/bFKiC5E4vpn3CDUS6" target="_blank" class="map-image-link" aria-label="View Stackly Headquarters on Map">
-                            <img src="../assets/Home1/Grid2/333.webp" alt="Map Location" class="map-img" onerror="this.src='https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80'">
+                            <img src="../assets/Contact/map.webp" alt="Map Location" class="map-img" onerror="this.src='https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80'">
                             <div class="map-overlay">
                                 <div class="map-pin"><i class="fa-solid fa-map-location-dot"></i></div>
                                 <span>Click to view on Map</span>
                             </div>
                         </a>
                     </div>
+                </div>
 
+                <div class="contact-info-wrapper">
+                    
                     <div class="info-block branches-block">
                         <h3>Our Showrooms</h3>
                         <div class="branch-grid">
@@ -183,6 +186,11 @@
                                 <p>45 Design District<br>Clerkenwell, LDN</p>
                                 <p class="branch-hours">Mon-Sat: 9am - 7pm</p>
                             </div>
+                            <div class="branch-card" style="grid-column: span 2;">
+                                <h4>Paris Atelier</h4>
+                                <p>12 Rue de la Paix, 75002 Paris, France</p>
+                                <p class="branch-hours">Tue-Sat: 10am - 7pm</p>
+                            </div>
                         </div>
                     </div>
 
@@ -193,21 +201,21 @@
                                 <div class="contact-icon"><i class="fa-solid fa-headset"></i></div>
                                 <div class="contact-text">
                                     <strong>Customer Support</strong>
-                                    <a href="mailto:support@stackly.auto">support@stackly.auto</a>
+                                    <span class="contact-value">support@stackly.auto</span>
                                 </div>
                             </li>
                             <li>
                                 <div class="contact-icon"><i class="fa-solid fa-compass-drafting"></i></div>
                                 <div class="contact-text">
                                     <strong>Design Team</strong>
-                                    <a href="mailto:design@stackly.auto">design@stackly.auto</a>
+                                    <span class="contact-value">design@stackly.auto</span>
                                 </div>
                             </li>
                             <li>
                                 <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
                                 <div class="contact-text">
                                     <strong>Toll-Free Phone</strong>
-                                    <a href="tel:+18881234567">+1 888 123 4567</a>
+                                    <span class="contact-value">+1 888 123 4567</span>
                                 </div>
                             </li>
                         </ul>
@@ -312,7 +320,7 @@
         </div>
 
         <div class="footer-bottom container">
-            <p>&copy; 2026 FurniStyle Premium Furniture. All rights reserved.</p>
+            <p>© 2026 FurniStyle Premium Furniture. All rights reserved.</p>
         </div>
     </footer>
 
@@ -427,10 +435,16 @@
         const contactForm = document.getElementById('contactForm');
         const cName = document.getElementById('c-name');
         const cEmail = document.getElementById('c-email');
+        const cPhone = document.getElementById('c-phone');
         const cSubject = document.getElementById('c-subject');
         const cMessage = document.getElementById('c-message');
         const contactToast = document.getElementById('contact-toast');
         const submitBtn = document.getElementById('submitBtn');
+
+        // Phone Input Strict Number Filtering & Length Limitation
+        cPhone.addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '').slice(0, 10);
+        });
 
         const isValidEmail = (email) => {
             const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -465,6 +479,14 @@
                 isValid = false;
             }
 
+            // Phone Validation: If User inputs something, it MUST be 10 digits
+            if (cPhone.value.trim() !== '') {
+                if (cPhone.value.trim().length !== 10) {
+                    showError(cPhone, 'err-phone', 'Phone number must be exactly 10 digits');
+                    isValid = false;
+                }
+            }
+
             if (cSubject.value === '') {
                 showError(cSubject, 'err-subject', 'Please select a subject');
                 isValid = false;
@@ -482,12 +504,20 @@
                 
                 setTimeout(() => {
                     contactForm.reset();
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane" style="margin-left: 5px;"></i>';
+                    submitBtn.innerHTML = 'Sent Successfully!';
                     
                     // Show success toast
                     contactToast.classList.add('show');
-                    setTimeout(() => { contactToast.classList.remove('show'); }, 4000);
+                    
+                    // Wait for user to read toast, then redirect
+                    setTimeout(() => { 
+                        contactToast.classList.remove('show'); 
+                        const loader = document.getElementById('page-loader');
+                        loader.style.display = 'flex';
+                        setTimeout(() => { loader.style.opacity = '1'; }, 10);
+                        setTimeout(() => { window.location.href = 'error.html'; }, 400);
+                    }, 2500);
+
                 }, 1500);
             }
         });

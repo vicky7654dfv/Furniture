@@ -17,8 +17,10 @@
 
 <body>
     <script>
-        if (localStorage.getItem('furniture-theme') === 'light') {
+        // Set light theme as the default
+        if (localStorage.getItem('furniture-theme') !== 'dark') {
             document.body.classList.add('light-theme');
+            localStorage.setItem('furniture-theme', 'light');
         }
     </script>
 
@@ -82,9 +84,8 @@
                     </a>
                 </li>
                 <li class="theme-toggle-li">
-                    <!-- Changed Theme Button Style per request -->
                     <button id="theme-toggle-btn" aria-label="Toggle Theme">
-                        <i class="fa-solid fa-sun" id="theme-icon"></i>
+                        <i class="fa-solid fa-moon" id="theme-icon"></i>
                     </button>
                 </li>
             </ul>
@@ -94,9 +95,7 @@
     </header>
 
     <main>
-        <!-- Section 1: Carousel 3 images -->
         <section class="hero-carousel">
-            <!-- Slide 1 (Right Align) - Removed overlay-dark per request -->
             <div class="carousel-slide active" id="slide-1">
                 <img src="./assets/Home1/Banner/b3.webp" alt="Living Room" class="bg-img">
                 <div class="carousel-content right-align container">
@@ -111,7 +110,6 @@
                 </div>
             </div>
 
-            <!-- Slide 2 (Right Align) - Removed overlay-dark -->
             <div class="carousel-slide" id="slide-2">
                 <img src="./assets/Home1/Banner/b2.webp" alt="Bedroom" class="bg-img">
                 <div class="carousel-content right-align container">
@@ -125,7 +123,6 @@
                 </div>
             </div>
 
-            <!-- Slide 3 (Left Align) - Removed overlay-dark -->
             <div class="carousel-slide" id="slide-3">
                 <img src="./assets/Home1/Banner/b1.webp" alt="Dining Room" class="bg-img">
                 <div class="carousel-content left-align container">
@@ -140,7 +137,6 @@
             </div>
         </section>
 
-        <!-- Section 2: Brands Marquee -->
         <section class="brands-section fade-in">
             <div class="brands-content">
                 <h2>Our Premium Partners</h2>
@@ -172,7 +168,6 @@
             </div>
         </section>
 
-        <!-- Section 3: Best Selling Grid -->
         <section class="best-selling">
             <div class="container">
                 <div style="text-align: center; margin-bottom: 50px;" class="fade-in">
@@ -280,7 +275,6 @@
             </div>
         </section>
 
-        <!-- Section 4: Summer Sale Parallax -->
         <section class="summer-sale fade-in">
             <div class="container summer-content">
                 <h2>Summer Sale</h2>
@@ -289,7 +283,6 @@
             </div>
         </section>
 
-        <!-- Section 5: Interior Inspirations FX (Professional Grid 5-items) -->
         <section class="gallery-fx fade-in">
             <div class="container">
                 <div style="text-align: center; margin-bottom: 50px;">
@@ -515,9 +508,13 @@
         const themeToggleBtn = document.getElementById('theme-toggle-btn');
         const themeIcon = document.getElementById('theme-icon');
 
-        if (localStorage.getItem('furniture-theme') === 'light') {
+        // Initial setup for light theme as default
+        if (document.body.classList.contains('light-theme')) {
             themeIcon.classList.remove('fa-sun');
             themeIcon.classList.add('fa-moon');
+        } else {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
         }
 
         themeToggleBtn.addEventListener('click', () => {
