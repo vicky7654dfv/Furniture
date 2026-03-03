@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | FurniStyle</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230d9488' d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <script>
+        if (localStorage.getItem('furniture-theme') === 'light') {
+            document.body.classList.add('light-theme');
+        }
+    </script>
+
+    <div id="page-loader">
+        <div class="loader-content">
+            <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="loader-img"
+                onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'">
+            <p>Connecting...</p>
+        </div>
+    </div>
+
+    <div id="contact-toast" class="toast">
+        <div class="toast-icon"><i class="fa-solid fa-check"></i></div>
+        <div class="toast-text">Message sent successfully! We'll be in touch.</div>
+    </div>
+
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <header class="headerWrap" id="main-header">
+        <div class="imgWrap">
+            <a href="../index.html">
+                <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="site-logo"
+                    onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'">
+            </a>
+        </div>
+
+        <div class="hamburger" id="hamburger-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="linksWrap" id="nav-links">
+            <div class="topCloseBtn" id="close-btn">
+                <i class="fa-solid fa-times"></i>
+            </div>
+            <ul>
+                <li class="dropdown" id="home-dropdown">
+                    <div class="dropdownHeader">
+                        <a href="javascript:void(0)" class="homePageLink" id="home-nav-link">Home</a>
+                        <button class="dropdownToggle" aria-label="Toggle dropdown" id="dropdown-toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <ul class="dropdownMenu" id="dropdown-menu">
+                        <li><a href="../index.html">Home 1</a></li>
+                        <li><a href="home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="dashboard.html">DashBoard</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li>
+                    <a href="checkout.html" aria-label="Checkout" class="cart-nav-icon checkout-text">
+                        Checkout<sup>3</sup>
+                    </a>
+                </li>
+                <li class="theme-toggle-li">
+                    <button id="theme-toggle-btn" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-sun" id="theme-icon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <div class="menuOverlay" id="menu-overlay"></div>
+    </header>
+
+    <main class="contact-main">
+        <section class="contact-hero fade-in">
+            <div class="container text-center">
+                <h1>Get in Touch</h1>
+                <p>Whether you're inquiring about a custom piece, tracking an order, or looking for interior design advice, our dedicated team is ready to assist you.</p>
+            </div>
+        </section>
+
+        <section class="contact-content-section container fade-in-up">
+            <div class="contact-grid">
+                
+                <div class="contact-form-wrapper">
+                    <h3>Send us a Message</h3>
+                    <p class="form-subtext">Fill out the form below and a furnishing expert will reply within 24 hours.</p>
+                    
+                    <form id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="c-name">Full Name <span class="req">*</span></label>
+                                <input type="text" id="c-name" placeholder="John Doe" autocomplete="name">
+                                <span class="error-msg" id="err-name"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-email">Email Address <span class="req">*</span></label>
+                                <input type="email" id="c-email" placeholder="john@example.com" autocomplete="email">
+                                <span class="error-msg" id="err-email"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="c-phone">Phone Number <span class="opt">(Optional)</span></label>
+                                <input type="tel" id="c-phone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+                                <span class="error-msg" id="err-phone"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="c-subject">Subject <span class="req">*</span></label>
+                                <div class="select-wrapper">
+                                    <select id="c-subject">
+                                        <option value="" disabled selected>Select an inquiry type</option>
+                                        <option value="sales">Sales & Product Info</option>
+                                        <option value="support">Order Tracking & Support</option>
+                                        <option value="design">Interior Design Consultation</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <i class="fa-solid fa-chevron-down select-icon"></i>
+                                </div>
+                                <span class="error-msg" id="err-subject"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="c-message">Your Message <span class="req">*</span></label>
+                            <textarea id="c-message" placeholder="How can we help you create your perfect space?" spellcheck="false"></textarea>
+                            <span class="error-msg" id="err-message"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary full-width" id="submitBtn">
+                            Send Message <i class="fa-solid fa-paper-plane" style="margin-left: 5px;"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="contact-info-wrapper">
+                    
+                    <div class="info-block">
+                        <h3>Global Headquarters</h3>
+                        <p class="hq-address"><i class="fa-solid fa-location-dot"></i> Stackly Headquarters, Los Angeles, CA</p>
+                        
+                        <a href="https://maps.app.goo.gl/bFKiC5E4vpn3CDUS6" target="_blank" class="map-image-link" aria-label="View Stackly Headquarters on Map">
+                            <img src="../assets/Home1/Grid2/333.webp" alt="Map Location" class="map-img" onerror="this.src='https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80'">
+                            <div class="map-overlay">
+                                <div class="map-pin"><i class="fa-solid fa-map-location-dot"></i></div>
+                                <span>Click to view on Map</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="info-block branches-block">
+                        <h3>Our Showrooms</h3>
+                        <div class="branch-grid">
+                            <div class="branch-card">
+                                <h4>New York Studio</h4>
+                                <p>125 5th Ave, Manhattan<br>NY 10003</p>
+                                <p class="branch-hours">Mon-Sat: 10am - 8pm</p>
+                            </div>
+                            <div class="branch-card">
+                                <h4>London Showroom</h4>
+                                <p>45 Design District<br>Clerkenwell, LDN</p>
+                                <p class="branch-hours">Mon-Sat: 9am - 7pm</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-block detailed-contact">
+                        <h3>Direct Lines</h3>
+                        <ul>
+                            <li>
+                                <div class="contact-icon"><i class="fa-solid fa-headset"></i></div>
+                                <div class="contact-text">
+                                    <strong>Customer Support</strong>
+                                    <a href="mailto:support@stackly.auto">support@stackly.auto</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+                                <div class="contact-text">
+                                    <strong>Design Team</strong>
+                                    <a href="mailto:design@stackly.auto">design@stackly.auto</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div class="contact-text">
+                                    <strong>Toll-Free Phone</strong>
+                                    <a href="tel:+18881234567">+1 888 123 4567</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>Connect With Us</h3>
+                        <div class="expanded-socials">
+                            <a href="error.html" class="social-btn">
+                                <i class="fa-brands fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="error.html" class="social-btn">
+                                <i class="fa-brands fa-pinterest-p"></i>
+                                <span>Pinterest</span>
+                            </a>
+                            <a href="error.html" class="social-btn">
+                                <i class="fa-brands fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="error.html" class="social-btn">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footerWrap container">
+            <div class="box">
+                <div class="logoContainer">
+                    <div class="logo">
+                        <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="footer-logo site-logo"
+                            onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'">
+                    </div>
+                </div>
+                <p class="footer-desc">
+                    FurniStyle is a global leader in accessible luxury furniture, dedicated to improving home aesthetics
+                    and comfort through meticulously crafted pieces and reliable support. We transform houses into
+                    elegant homes.
+                </p>
+            </div>
+
+            <div class="box">
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="dashboard.html">DashBoard</a></li>
+                    <li><a href="product.html">Product</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h4>Categories</h4>
+                <ul class="footer-links">
+                    <li><a href="error.html">Living Room Sets</a></li>
+                    <li><a href="error.html">Bedroom Collections</a></li>
+                    <li><a href="error.html">Dining Sets</a></li>
+                    <li><a href="error.html">Office Furniture</a></li>
+                    <li><a href="error.html">Outdoor & Patio</a></li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h4>Contact</h4>
+                <ul class="contactInfo">
+                    <li><i class="fa-solid fa-location-dot"></i><span> Stackly Headquarters, Los Angeles, CA</span></li>
+                    <li><i class="fa-solid fa-phone"></i> +1 888 123 4567</li>
+                    <li><i class="fa-solid fa-envelope"></i> design@stackly.auto</li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h4>Newsletter</h4>
+                <p>Subscribe for interior design tips & upcoming sales.</p>
+                <form id="footer-newsletter-form" class="subscribe-form" novalidate>
+                    <input type="email" id="newsletter-email" name="email" placeholder="Your Email"
+                        autocomplete="email">
+                    <span id="newsletter-error"
+                        style="color: var(--error-color); font-size: 0.8rem; display: block; margin-top: -5px; min-height: 15px;"></span>
+                    <button type="submit" class="btn btn-primary full-width">Subscribe</button>
+                </form>
+                <div class="media">
+                    <a href="error.html" class="socialLink" aria-label="Pinterest"><i
+                            class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="error.html" class="socialLink" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="error.html" class="socialLink" aria-label="Facebook"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="error.html" class="socialLink" aria-label="Website"><i
+                            class="fa-solid fa-globe"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom container">
+            <p>&copy; 2026 FurniStyle Premium Furniture. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Full Page Loader Interceptor ---
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('page-loader');
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 300);
+        });
+
+        // Ensure links trigger loader (Excluding specific interactive elements)
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#' && !href.startsWith('javascript') && !href.startsWith('http') && !href.startsWith('mailto:') && !href.startsWith('tel:') && !this.classList.contains('cart-nav-icon')) {
+                    e.preventDefault();
+                    const loader = document.getElementById('page-loader');
+                    loader.style.display = 'flex';
+                    setTimeout(() => { loader.style.opacity = '1'; }, 10);
+                    setTimeout(() => { window.location.href = href; }, 400);
+                }
+            });
+        });
+
+        // --- Hamburger Menu Logic ---
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const navLinks = document.getElementById('nav-links');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const dropdownToggleBtn = document.getElementById('dropdown-toggle-btn');
+        const homeNavLink = document.getElementById('home-nav-link');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const body = document.body;
+
+        function openMenu() {
+            navLinks.classList.add('showMenu');
+            menuOverlay.style.display = 'block';
+            body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('showMenu');
+            menuOverlay.style.display = 'none';
+            body.classList.remove('menu-open');
+            dropdownMenu.classList.remove('showDropdown');
+        }
+
+        hamburgerBtn.addEventListener('click', (e) => { e.stopPropagation(); openMenu(); });
+        closeBtn.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        document.addEventListener('click', (e) => {
+            if (body.classList.contains('menu-open')) {
+                if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                    closeMenu();
+                }
+            }
+        });
+
+        dropdownToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault(); e.stopPropagation();
+            dropdownMenu.classList.toggle('showDropdown');
+        });
+
+        homeNavLink.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault(); e.stopPropagation();
+                dropdownMenu.classList.toggle('showDropdown');
+            }
+        });
+
+        // --- Theme Toggle ---
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (localStorage.getItem('furniture-theme') === 'light') {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            if (document.body.classList.contains('light-theme')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('furniture-theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('furniture-theme', 'dark');
+            }
+        });
+
+        // --- Sticky Header & Scroll To Top ---
+        const header = document.getElementById('main-header');
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) header.classList.add('sticky');
+            else header.classList.remove('sticky');
+
+            if (window.scrollY > 300) scrollBtn.classList.add('visible');
+            else scrollBtn.classList.remove('visible');
+        });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- Contact Form Validation & Logic ---
+        const contactForm = document.getElementById('contactForm');
+        const cName = document.getElementById('c-name');
+        const cEmail = document.getElementById('c-email');
+        const cSubject = document.getElementById('c-subject');
+        const cMessage = document.getElementById('c-message');
+        const contactToast = document.getElementById('contact-toast');
+        const submitBtn = document.getElementById('submitBtn');
+
+        const isValidEmail = (email) => {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        };
+
+        const showError = (element, messageId, message) => {
+            document.getElementById(messageId).innerText = message;
+            element.classList.add('input-error');
+        };
+
+        const clearErrors = () => {
+            document.querySelectorAll('.error-msg').forEach(el => el.innerText = '');
+            document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+        };
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            clearErrors();
+            let isValid = true;
+
+            if (cName.value.trim() === '') {
+                showError(cName, 'err-name', 'Name is required');
+                isValid = false;
+            }
+
+            if (cEmail.value.trim() === '') {
+                showError(cEmail, 'err-email', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(cEmail.value.trim())) {
+                showError(cEmail, 'err-email', 'Please enter a valid email');
+                isValid = false;
+            }
+
+            if (cSubject.value === '') {
+                showError(cSubject, 'err-subject', 'Please select a subject');
+                isValid = false;
+            }
+
+            if (cMessage.value.trim() === '') {
+                showError(cMessage, 'err-message', 'Message cannot be empty');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulate API Call
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+                
+                setTimeout(() => {
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane" style="margin-left: 5px;"></i>';
+                    
+                    // Show success toast
+                    contactToast.classList.add('show');
+                    setTimeout(() => { contactToast.classList.remove('show'); }, 4000);
+                }, 1500);
+            }
+        });
+
+        // --- Footer Newsletter Validation ---
+        const footerForm = document.getElementById('footer-newsletter-form');
+        const newsletterEmail = document.getElementById('newsletter-email');
+        const newsletterError = document.getElementById('newsletter-error');
+
+        footerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            newsletterError.innerText = '';
+            newsletterEmail.style.borderColor = '';
+
+            if (newsletterEmail.value.trim() === '') {
+                newsletterError.innerText = 'Email is required';
+                newsletterEmail.style.borderColor = 'var(--error-color)';
+            } else if (!isValidEmail(newsletterEmail.value.trim())) {
+                newsletterError.innerText = 'Please enter a valid email address';
+                newsletterEmail.style.borderColor = 'var(--error-color)';
+            } else {
+                window.location.href = 'error.html';
+            }
+        });
+
+        // --- Fade In Animation ---
+        const fadeElems = document.querySelectorAll('.fade-in, .fade-in-up');
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeElems.forEach(elem => fadeInObserver.observe(elem));
+    </script>
+</body>
+</html>
