@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | FurniStyle</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230d9488' d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+    <script>
+        if (localStorage.getItem('furniture-theme') === 'light') {
+            document.body.classList.add('light-theme');
+        }
+    </script>
+
+    <!-- Top Navbar -->
+    <header class="dash-topbar">
+        <div class="topbar-left">
+            <a href="../index.html">
+                <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="dash-logo"
+                    onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'">
+            </a>
+        </div>
+
+        <div class="topbar-right">
+            <button class="theme-toggle-btn" id="theme-btn" aria-label="Toggle Theme">
+                <i class="fa-solid fa-sun" id="theme-icon"></i>
+            </button>
+            <a href="../index.html" class="btn-exit">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Exit Dashboard
+            </a>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="dash-sidebar">
+        <span class="nav-label">Main Menu</span>
+        <ul class="dash-nav" id="sidebar-nav">
+            <li class="dash-nav-item active" data-target="overview">
+                <i class="fa-solid fa-house"></i> <span>Overview</span>
+            </li>
+            <li class="dash-nav-item" data-target="orders">
+                <i class="fa-solid fa-cart-shopping"></i> <span>Orders</span>
+            </li>
+            <li class="dash-nav-item" data-target="users">
+                <i class="fa-solid fa-users"></i> <span>Users</span>
+            </li>
+            <li class="dash-nav-item" data-target="analytics">
+                <i class="fa-solid fa-chart-pie"></i> <span>Analytics</span>
+            </li>
+            <li class="dash-nav-item" data-target="messages">
+                <i class="fa-solid fa-envelope"></i> <span>Messages</span>
+            </li>
+            <li class="dash-nav-item" data-target="inventory">
+                <i class="fa-solid fa-box-open"></i> <span>Inventory</span>
+            </li>
+        </ul>
+
+        <span class="nav-label">Preferences</span>
+        <ul class="dash-nav">
+            <li class="dash-nav-item" data-target="settings">
+                <i class="fa-solid fa-gear"></i> <span>Settings</span>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Tabs -->
+    <main class="dash-main">
+
+        <!-- 1. OVERVIEW -->
+        <section id="overview" class="tab-pane active">
+            <div class="section-header">
+                <div>
+                    <h3>Dashboard Overview</h3>
+                    <p>Welcome back, Admin. Here's what's happening today.</p>
+                </div>
+            </div>
+
+            <div class="grid-4">
+                <div class="stat-card">
+                    <div class="stat-icon teal"><i class="fa-solid fa-dollar-sign"></i></div>
+                    <div class="stat-info">
+                        <h4>Total Revenue</h4>
+                        <div class="stat-value">$124,500</div>
+                        <div class="stat-trend trend-up"><i class="fa-solid fa-arrow-up"></i> 12.5%</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="fa-solid fa-box-open"></i></div>
+                    <div class="stat-info">
+                        <h4>Total Orders</h4>
+                        <div class="stat-value">842</div>
+                        <div class="stat-trend trend-up"><i class="fa-solid fa-arrow-up"></i> 5.2%</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="fa-solid fa-users"></i></div>
+                    <div class="stat-info">
+                        <h4>Active Users</h4>
+                        <div class="stat-value">1,204</div>
+                        <div class="stat-trend trend-down"><i class="fa-solid fa-arrow-down"></i> 1.1%</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="stat-info">
+                        <h4>Low Stock Items</h4>
+                        <div class="stat-value">18</div>
+                        <div class="stat-trend trend-up"><i class="fa-solid fa-arrow-up"></i> 4 items</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <span class="chart-title">Revenue Overview (Weekly)</span>
+                        <i class="fa-solid fa-ellipsis-vertical" style="color: var(--text-muted); cursor: pointer;"></i>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="overviewLineChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <span class="chart-title">Top Selling Categories</span>
+                        <i class="fa-solid fa-filter" style="color: var(--text-muted); cursor: pointer;"></i>
+                    </div>
+                    <div class="chart-container pie">
+                        <canvas id="overviewDoughnutChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ORDERS -->
+        <section id="orders" class="tab-pane">
+            <div class="section-header">
+                <div>
+                    <h3>Order Management</h3>
+                    <p>Track, process, and manage recent customer orders.</p>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="dash-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#ORD-8942</td>
+                            <td>
+                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=1" alt="avatar"
+                                        class="user-avatar"> Sarah Jenkins</div>
+                            </td>
+                            <td>Emerald Velvet Sofa</td>
+                            <td>Oct 12, 2026</td>
+                            <td>$1,299.00</td>
+                            <td><span class="badge completed">Delivered</span></td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-8941</td>
+                            <td>
+                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=2" alt="avatar"
+                                        class="user-avatar"> Michael Chen</div>
+                            </td>
+                            <td>Modern Lounge Chair</td>
+                            <td>Oct 12, 2026</td>
+                            <td>$499.00</td>
+                            <td><span class="badge pending">Processing</span></td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-8940</td>
+                            <td>
+                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=3" alt="avatar"
+                                        class="user-avatar"> Emily Davis</div>
+                            </td>
+                            <td>Oak Dining Table Set</td>
+                            <td>Oct 11, 2026</td>
+                            <td>$2,150.00</td>
+                            <td><span class="badge pending">Shipped</span></td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-8939</td>
+                            <td>
+                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=4" alt="avatar"
+                                        class="user-avatar"> Robert Wilson</div>
+                            </td>
+                            <td>Brass Floor Lamp</td>
+                            <td>Oct 10, 2026</td>
+                            <td>$120.00</td>
+                            <td><span class="badge cancelled">Cancelled</span></td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-8938</td>
+                            <td>
+                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=5" alt="avatar"
+                                        class="user-avatar"> Jessica Taylor</div>
+                            </td>
+                            <td>Mid-Century Platform Bed</td>
+                            <td>Oct 09, 2026</td>
+                            <td>$1,899.00</td>
+                            <td><span class="badge completed">Delivered</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. USERS -->
+        <section id="users" class="tab-pane">
+            <div class="section-header">
+                <div>
+                    <h3>User Demographics</h3>
+                    <p>Analyze your customer base and user registrations.</p>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <span class="chart-title">New vs Returning Users</span>
+                    </div>
+                    <div class="chart-container pie">
+                        <canvas id="usersPieChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <span class="chart-title">User Growth (Yearly)</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="usersBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="dash-table">
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Location</th>
+                            <th>Join Date</th>
+                            <th>Total Spent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=1" alt="avatar"
+                                        class="user-avatar"> Sarah Jenkins</div>
+                            </td>
+                            <td>sarah.j@example.com</td>
+                            <td>New York, NY</td>
+                            <td>Jan 15, 2025</td>
+                            <td>$4,520.00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="user-cell"><img src="https://i.pravatar.cc/100?img=2" alt="avatar"
+                                        class="user-avatar"> Michael Chen</div>
+                            </td>
+                            <td>m.chen99@example.com</td>
+                            <td>San Francisco, CA</td>
+                            <td>Mar 22, 2026</td>
+                            <td>$890.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. ANALYTICS -->
+        <section id="analytics" class="tab-pane">
+            <div class="section-header">
+                <div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Deep dive into website traffic, conversion rates, and performance.</p>
+                </div>
+            </div>
+
+            <div class="chart-card" style="margin-bottom: 30px;">
+                <div class="chart-header">
+                    <span class="chart-title">Website Traffic vs Conversion Rate (Monthly % over time)</span>
+                </div>
+                <div class="chart-container tall">
+                    <canvas id="analyticsMixedChart"></canvas>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="fa-solid fa-bullseye"></i></div>
+                    <div class="stat-info">
+                        <h4>Target Achieved</h4>
+                        <div class="stat-value">92%</div>
+                        <div class="stat-trend trend-up">Monthly Goal</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="fa-solid fa-clock"></i></div>
+                    <div class="stat-info">
+                        <h4>Avg. Session</h4>
+                        <div class="stat-value">4m 12s</div>
+                        <div class="stat-trend trend-up">+14s this week</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="fa-solid fa-person-walking-arrow-right"></i></div>
+                    <div class="stat-info">
+                        <h4>Bounce Rate</h4>
+                        <div class="stat-value">34.2%</div>
+                        <div class="stat-trend trend-down">-2.1% improvement</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. MESSAGES -->
+        <section id="messages" class="tab-pane">
+            <div class="section-header">
+                <div>
+                    <h3>Support Messages</h3>
+                    <p>Communicate with customers securely.</p>
+                </div>
+            </div>
+
+            <div class="messages-layout">
+                <!-- Sidebar Threads -->
+                <div class="msg-sidebar">
+                    <div class="msg-header">
+                        <input type="text" id="msgSearch" name="msgSearch" placeholder="Search messages..."
+                            autocomplete="off">
+                    </div>
+                    <div class="msg-list">
+                        <div class="msg-thread active">
+                            <div class="msg-thread-top">
+                                <h5>Emily Davis</h5>
+                                <span>10:42 AM</span>
+                            </div>
+                            <p>Hi, I was wondering about the shipping time...</p>
+                        </div>
+                        <div class="msg-thread">
+                            <div class="msg-thread-top">
+                                <h5>Michael Chen</h5>
+                                <span>Yesterday</span>
+                            </div>
+                            <p>Thank you! The lounge chair fits perfectly.</p>
+                        </div>
+                        <div class="msg-thread">
+                            <div class="msg-thread-top">
+                                <h5>Robert Wilson</h5>
+                                <span>Monday</span>
+                            </div>
+                            <p>I need to cancel my order #ORD-8939 please.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Chat -->
+                <div class="msg-content">
+                    <div class="chat-header">
+                        <img src="https://i.pravatar.cc/100?img=3" alt="avatar" class="user-avatar">
+                        <div>
+                            <h4 style="font-size: 1rem;">Emily Davis</h4>
+                            <span style="font-size: 0.8rem; color: var(--success);"><i class="fa-solid fa-circle"></i>
+                                Online</span>
+                        </div>
+                    </div>
+
+                    <div class="chat-history">
+                        <div class="bubble received">
+                            Hello Admin! I ordered the Oak Dining Table Set yesterday. Could you tell me the estimated
+                            shipping time to Los Angeles?
+                        </div>
+                        <div class="bubble sent">
+                            Hi Emily! Thank you for your purchase. Standard freight to LA typically takes 5-7 business
+                            days. You will receive a tracking link via email once it leaves our warehouse.
+                        </div>
+                        <div class="bubble received">
+                            That's great. Is assembly required for the table?
+                        </div>
+                    </div>
+
+                    <!-- User Request: Reply box with fixed length and width -->
+                    <div class="reply-area">
+                        <textarea id="replyMsg" name="replyMsg" class="reply-box"
+                            placeholder="Type your reply here..."></textarea>
+                        <button class="btn-send"><i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Send
+                            Reply</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. INVENTORY -->
+        <section id="inventory" class="tab-pane">
+            <div class="section-header">
+                <div>
+                    <h3>Inventory Status</h3>
+                    <p>Monitor warehouse stock levels by percentage representations.</p>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span class="chart-title">Stock Capacity %</span>
+                </div>
+
+                <div class="progress-list">
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Sofas & Lounges</span>
+                            <span class="progress-value">85% Stocked</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width: 85%; background: var(--success);"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Dining Tables & Sets</span>
+                            <span class="progress-value">60% Stocked</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width: 60%; background: var(--info);"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Office Furniture</span>
+                            <span class="progress-value">40% Stocked</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width: 40%; background: var(--warning);"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Lighting & Decor</span>
+                            <span class="progress-value">15% Stocked (Reorder Required)</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width: 15%; background: var(--danger);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. SETTINGS -->
+        <section id="settings" class="tab-pane">
+            <div class="section-header">
+                <div>
+                    <h3>Dashboard Settings</h3>
+                    <p>Manage store preferences, notifications, and permissions.</p>
+                </div>
+            </div>
+
+            <form class="settings-form">
+                <div class="form-group">
+                    <label for="storeName">Store Name</label>
+                    <input type="text" id="storeName" value="FurniStyle Premium">
+                </div>
+                <div class="form-group">
+                    <label for="adminEmail">Administrator Email</label>
+                    <input type="email" id="adminEmail" value="admin@stackly.auto">
+                </div>
+                <div class="form-group">
+                    <label for="currency">Default Currency</label>
+                    <select id="currency">
+                        <option value="usd">USD ($)</option>
+                        <option value="eur">EUR (€)</option>
+                        <option value="gbp">GBP (£)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="taxRate">Global Tax Rate (%)</label>
+                    <input type="number" id="taxRate" value="8.5" step="0.1">
+                </div>
+                <button type="button" class="btn-save">Save Changes</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- JavaScript For Interactivity and Chart.js -->
+    <script>
+        // --- Theme Toggle ---
+        const themeToggleBtn = document.getElementById('theme-btn');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (document.body.classList.contains('light-theme')) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            if (document.body.classList.contains('light-theme')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('furniture-theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('furniture-theme', 'dark');
+            }
+            // Trigger chart update for color switching (optional fine-tuning)
+            updateChartsTheme();
+        });
+
+        // --- Sidebar Tab Navigation ---
+        const navItems = document.querySelectorAll('.dash-nav-item');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active from all
+                navItems.forEach(nav => nav.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                // Add active to clicked target
+                item.classList.add('active');
+                const targetId = item.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // --- Chart.js Initializations ---
+        // Global defaults for dark theme style matches
+        Chart.defaults.color = '#94a3b8'; // text-muted
+        Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+
+        const tealColor = '#0d9488';
+        const infoColor = '#3b82f6';
+        const warningColor = '#f59e0b';
+        const gridColor = 'rgba(148, 163, 184, 0.1)';
+
+        let chartInstances = [];
+
+        function initCharts() {
+            // 1. Overview Line Chart
+            const ctxLine = document.getElementById('overviewLineChart').getContext('2d');
+            chartInstances.push(new Chart(ctxLine, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Revenue ($)',
+                        data: [12000, 19000, 15000, 25000, 22000, 30000, 28000],
+                        borderColor: tealColor,
+                        backgroundColor: 'rgba(13, 148, 136, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4, // smooth curves
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { grid: { color: gridColor, drawBorder: false } },
+                        x: { grid: { display: false, drawBorder: false } }
+                    }
+                }
+            }));
+
+            // 2. Overview Doughnut Chart
+            const ctxDoughnut = document.getElementById('overviewDoughnutChart').getContext('2d');
+            chartInstances.push(new Chart(ctxDoughnut, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Living Room', 'Bedroom', 'Dining', 'Office'],
+                    datasets: [{
+                        data: [45, 25, 20, 10],
+                        backgroundColor: [tealColor, infoColor, warningColor, '#ef4444'],
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '75%',
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            }));
+
+            // 3. Users Pie Chart
+            const ctxPie = document.getElementById('usersPieChart').getContext('2d');
+            chartInstances.push(new Chart(ctxPie, {
+                type: 'pie',
+                data: {
+                    labels: ['New Users', 'Returning Users'],
+                    datasets: [{
+                        data: [35, 65],
+                        backgroundColor: [infoColor, tealColor],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            }));
+
+            // 4. Users Bar Chart
+            const ctxBar = document.getElementById('usersBarChart').getContext('2d');
+            chartInstances.push(new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: ['2023', '2024', '2025', '2026'],
+                    datasets: [{
+                        label: 'User Growth',
+                        data: [5000, 12000, 28000, 45000],
+                        backgroundColor: tealColor,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { grid: { color: gridColor, drawBorder: false } },
+                        x: { grid: { display: false, drawBorder: false } }
+                    }
+                }
+            }));
+
+            // 5. Analytics Mixed Chart (Line + Bar % representations)
+            const ctxMixed = document.getElementById('analyticsMixedChart').getContext('2d');
+            chartInstances.push(new Chart(ctxMixed, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                    datasets: [
+                        {
+                            type: 'line',
+                            label: 'Conversion Rate %',
+                            data: [2.5, 3.2, 3.8, 3.1, 4.0, 4.5, 4.2, 5.1, 5.8, 6.2],
+                            borderColor: warningColor,
+                            borderWidth: 3,
+                            tension: 0.3,
+                            yAxisID: 'y1'
+                        },
+                        {
+                            type: 'bar',
+                            label: 'Website Traffic (k)',
+                            data: [15, 20, 22, 18, 30, 35, 32, 45, 55, 60],
+                            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                            borderRadius: 4,
+                            yAxisID: 'y'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    scales: {
+                        y: { type: 'linear', display: true, position: 'left', grid: { color: gridColor } },
+                        y1: { type: 'linear', display: true, position: 'right', grid: { drawOnChartArea: false } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            }));
+        }
+
+        function updateChartsTheme() {
+            // Update grid colors on theme toggle if strictly necessary.
+            // A simple page refresh works, but for dynamic updating we iterate charts.
+            // Given the complexity, CSS variables provide a unified look.
+            chartInstances.forEach(chart => {
+                chart.update();
+            });
+        }
+
+        // Initialize charts when DOM is ready
+        document.addEventListener('DOMContentLoaded', initCharts);
+
+    </script>
+</body>
+
+</html>
