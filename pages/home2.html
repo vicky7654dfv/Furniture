@@ -4,24 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FurniStyle | Premium Furniture Home</title>
+    <title>FurniStyle | Premium Furniture – Home 2</title>
+    <meta name="description"
+        content="Explore FurniStyle's premium furniture collections. Discover bespoke design, sustainable craftsmanship and global delivery.">
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230d9488' d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z'/></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/home2.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/home2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
 </head>
 
 <body>
     <script>
-        // Light theme by default
         if (localStorage.getItem('furniture-theme') !== 'dark') {
             document.body.classList.add('light-theme');
-            localStorage.setItem('furniture-theme', 'light');
         }
     </script>
 
@@ -92,161 +96,222 @@
 
     <main class="home2-main">
 
-        <section class="h2-hero">
+        <section class="h2-hero" id="h2-hero">
             <div class="h2-video-bg">
                 <video autoplay muted loop playsinline>
                     <source src="../assets/Home2/herovid.mp4" type="video/mp4">
                 </video>
-                <div class="h2-video-mask"></div>
+                <div class="h2-video-dimmer"></div>
             </div>
-            <div class="h2-hero-content container fade-in-up">
-                <h1>Redefining Living Spaces</h1>
-                <p>Discover the perfect blend of contemporary aesthetics, supreme comfort, and architectural precision
-                    for your home.</p>
-                <div class="h2-hero-btns">
+            <div class="h2-hero-content container">
+                <h1 id="hero-title">Redefining Living Spaces</h1>
+                <p id="hero-para">Discover the perfect blend of contemporary aesthetics, supreme comfort, and
+                    architectural precision for your home.</p>
+                <div class="h2-hero-btns" id="hero-btns">
                     <a href="error.html" class="btn-gsap-solid">Shop Collection</a>
                     <a href="error.html" class="btn-gsap-outline">Explore Design</a>
                 </div>
             </div>
         </section>
 
-        <section class="h2-yt-section container section-padding">
-            <div class="h2-grid-2">
-                <div class="h2-yt-data fade-in">
-                    <h2 class="gsap-title">Uncompromising Quality</h2>
-                    <p class="gsap-sub">Every piece in our collection is rigorously tested for durability, ergonomic support, and environmental impact.</p>
+        <section class="h2-yt-section section-padding" id="h2-yt">
+            <div class="container">
+                <div class="h2-grid-2 align-center">
+                    <div class="h2-yt-data">
+                        <span class="eyebrow-label teal">Quality Standards</span>
+                        <h3 class="section-heading">Uncompromising<br>Craftsmanship</h3>
+                        <p class="section-sub">Every piece in our collection is rigorously tested for durability,
+                            ergonomic
+                            support, and environmental responsibility.</p>
+                        <ul class="data-list">
+                            <li class="data-item">
+                                <div class="icon-box"><i class="fa-solid fa-leaf"></i></div>
+                                <div class="list-text">
+                                    <strong class="list-strong">Sustainable Sourcing</strong>
+                                    <span class="list-span">85% of our wood is ethically harvested from certified
+                                        forests worldwide.</span>
+                                </div>
+                            </li>
+                            <li class="data-item">
+                                <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                                <div class="list-text">
+                                    <strong class="list-strong">Durability Tested</strong>
+                                    <span class="list-span">Fabrics undergo 50,000 double-rub abrasion tests for lasting
+                                        quality.</span>
+                                </div>
+                            </li>
+                            <li class="data-item">
+                                <div class="icon-box"><i class="fa-solid fa-couch"></i></div>
+                                <div class="list-text">
+                                    <strong class="list-strong">Ergonomic Design</strong>
+                                    <span class="list-span">Foam density precisely engineered for superior lumbar
+                                        support.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                    <ul class="data-list">
-                        <li>
-                            <div class="icon-box"><i class="fa-solid fa-leaf"></i></div>
-                            <div class="list-text">
-                                <strong>Sustainable Sourcing</strong>
-                                <span>85% of our wood is ethically harvested from certified forests.</span>
+                    <div class="h2-yt-wrapper">
+                        <div class="glow-frame">
+                            <div class="yt-responsive">
+                                <iframe src="https://www.youtube.com/embed/ft5lKtuCzVE?si=TKpdJlwxaCv3ShRa"
+                                    title="FurniStyle Craftsmanship" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
                             </div>
-                        </li>
-                        <li>
-                            <div class="icon-box"><i class="fa-solid fa-shield-cat"></i></div>
-                            <div class="list-text">
-                                <strong>Durability Tested</strong>
-                                <span>Fabrics undergo 50,000 double-rub abrasion tests for longevity.</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="icon-box"><i class="fa-solid fa-couch"></i></div>
-                            <div class="list-text">
-                                <strong>Ergonomic Design</strong>
-                                <span>Foam density engineered specifically for lumbar support.</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="h2-yt-wrapper fade-in-up">
-                    <div class="glow-border">
-                        <div class="yt-container">
-                            <iframe src="https://www.youtube.com/embed/ft5lKtuCzVE?si=TKpdJlwxaCv3ShRa"
-                                title="FurniStyle Video" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="h2-fixed-video-sec">
-            <div class="fixed-bg-wrapper">
+        <section class="h2-fixed-sec" id="h2-legacy">
+            <div class="fixed-vid-wrap">
                 <video autoplay muted loop playsinline>
                     <source src="../assets/Home2/home2vid.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="fixed-overlay"></div>
+            <div class="fixed-content container text-center">
+                <span class="eyebrow-label" style="color: #7ce0d3;">Our Story</span>
+                <h2 class="section-heading white">The FurniStyle Legacy</h2>
+                <p class="section-sub white" style="margin: 0 auto;">For over two decades, we have partnered with
+                    world-renowned architects and
+                    craftsmen to bring high-end, functional art into everyday living rooms.</p>
 
-            <div class="fixed-content container text-center fade-in">
-                <h2>The FurniStyle Legacy</h2>
-                <p>For over two decades, we have partnered with world-renowned architects and craftsmen to bring
-                    high-end, functional art into everyday living rooms.</p>
-                <div class="fixed-stats">
-                    <div class="stat glass-card">
-                        <h3>20+</h3>
-                        <span>Years in Design</span>
+                <div class="stats-row" id="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-value">
+                            <h3 class="stat-num" data-target="20">0</h3>
+                            <span class="stat-suffix">+</span>
+                        </div>
+                        <p class="stat-label">Years in Design</p>
                     </div>
-                    <div class="stat glass-card">
-                        <h3>15k+</h3>
-                        <span>Homes Furnished</span>
+                    <div class="stat-card">
+                        <div class="stat-value">
+                            <h3 class="stat-num" data-target="15000">0</h3>
+                            <span class="stat-suffix">+</span>
+                        </div>
+                        <p class="stat-label">Homes Furnished</p>
                     </div>
-                    <div class="stat glass-card">
-                        <h3>50+</h3>
-                        <span>Design Awards</span>
+                    <div class="stat-card">
+                        <div class="stat-value">
+                            <h3 class="stat-num" data-target="50">0</h3>
+                            <span class="stat-suffix">+</span>
+                        </div>
+                        <p class="stat-label">Design Awards</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">
+                            <h3 class="stat-num" data-target="40">0</h3>
+                            <span class="stat-suffix">+</span>
+                        </div>
+                        <p class="stat-label">Countries Served</p>
                     </div>
                 </div>
+
                 <div class="fixed-actions">
-                    <a href="error.html" class="btn btn-primary btn-gsap">Our Heritage</a>
-                    <a href="error.html" class="btn btn-outline-white btn-gsap">View Certificates</a>
+                    <a href="error.html" class="btn-solid">Our Heritage</a>
+                    <a href="error.html" class="btn-outline">View Certificates</a>
                 </div>
             </div>
         </section>
 
-        <section class="h2-circle-section container section-padding">
-            <div class="h2-grid-2 align-center">
+        <section class="h2-collections section-padding" id="h2-collections">
+            <div class="container">
+                <div class="h2-grid-2 align-center collections-grid">
 
-                <div class="h2-circle-text fade-in">
-                    <h2 class="gsap-massive-title">Curated Collections</h2>
-                    <div class="accent-line"></div>
-                    <p>Our seasonal collections are designed to evoke emotion. Browse through our carefully orchestrated
-                        styling themes, ranging from sleek industrial lofts to warm, mid-century modern retreats.</p>
-                    <p>Each design narrative is supported by master artisans dedicated to perfection.</p>
-                    <a href="error.html" class="btn btn-outline-teal btn-gsap" style="margin-top: 20px;">Explore Styles</a>
-                </div>
+                    <div class="collections-text">
+                        <span class="eyebrow-label teal">Collections</span>
+                        <h2 class="section-heading" id="collections-heading"></h2>
+                        <div class="accent-bar"></div>
+                        <p class="section-sub">Our seasonal collections evoke emotion. Browse carefully orchestrated
+                            styling themes — from sleek industrial lofts to warm, mid-century retreats.</p>
+                        <p class="section-sub">Each narrative is supported by master artisans dedicated to perfection.
+                        </p>
+                        <a href="error.html" class="btn-teal-outline"
+                            style="margin-top: 30px; display: inline-block;">Explore Styles <i
+                                class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                    </div>
 
-                <div class="h2-circle-carousel fade-in-up">
-                    <div class="circle-ring">
-                        <div class="circle-container">
-                            <img src="../assets/Home2/img1.webp"
-                                alt="Collection 1" class="circle-slide active">
-                            <img src="../assets/Home2/img2.webp"
-                                alt="Collection 2" class="circle-slide">
-                            <img src="../assets/Home2/img3.webp"
-                                alt="Collection 3" class="circle-slide">
+                    <div class="circle-wrap">
+                        <div class="circle-ring" id="circle-ring">
+                            <div class="circle-track">
+                                <img src="../assets/Home2/img1.webp" alt="Collection 1" class="circle-img active"
+                                    id="c-img-0">
+                                <img src="../assets/Home2/img2.webp" alt="Collection 2" class="circle-img" id="c-img-1">
+                                <img src="../assets/Home2/img3.webp" alt="Collection 3" class="circle-img" id="c-img-2">
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </section>
 
-        <section class="h2-company-info section-padding">
-            <div class="container fade-in">
-                <div class="text-center" style="margin-bottom: 60px;">
-                    <h2 class="gsap-title" style="color: var(--text-main);">Company Information</h2>
-                    <p class="gsap-sub mx-auto">Everything you need to know about how we operate, our values, and our commitment to you.</p>
+        <section class="h2-info section-padding" id="h2-info">
+            <div class="container">
+                <div class="text-center info-header">
+                    <span class="eyebrow-label teal">Who We Are</span>
+                    <h2 class="section-heading">Company Information</h2>
+                    <p class="section-sub mx-auto" style="max-width: 600px;">Everything you need to know about how we
+                        operate, our values, and our commitment to excellence.</p>
                 </div>
+                <div class="info-grid">
 
-                <div class="info-card-grid">
-                    <div class="info-card gsap-glow-box">
-                        <i class="fa-solid fa-leaf"></i>
-                        <h4>Sustainability</h4>
-                        <p>We are committed to a zero-carbon footprint by 2030, utilizing recycled fabrics and
-                            sustainable supply chains globally.</p>
-                    </div>
-                    <div class="info-card gsap-glow-box">
-                        <i class="fa-solid fa-truck-fast"></i>
-                        <h4>Global Logistics</h4>
-                        <p>Our white-glove delivery network ensures your premium furniture arrives safely to over 40
-                            countries worldwide.</p>
-                    </div>
-                    <div class="info-card gsap-glow-box">
-                        <i class="fa-solid fa-pen-nib"></i>
-                        <h4>Bespoke Design</h4>
-                        <p>Work directly with our in-house interior architects to customize fabrics, dimensions, and
-                            finishes to your exact specs.</p>
-                    </div>
-                    <div class="info-card gsap-glow-box">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        <h4>Lifetime Warranty</h4>
-                        <p>We stand by our craftsmanship. Every hardwood frame and structural component is guaranteed
-                            for life.</p>
-                    </div>
+                    <article class="info-card">
+                        <div class="info-card-img">
+                            <img src="../assets/Home2/grid1.webp" alt="Sustainability" loading="lazy">
+                        </div>
+                        <div class="info-card-body">
+                            <h4>Sustainability</h4>
+                            <p>Committed to a zero-carbon footprint by 2030 — recycled fabrics, responsible supply
+                                chains, verified globally.</p>
+                            <a href="error.html" class="card-link-btn">Learn More <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="info-card-img">
+                            <img src="../assets/Home2/grid2.webp" alt="Global Logistics" loading="lazy">
+                        </div>
+                        <div class="info-card-body">
+                            <h4>Global Logistics</h4>
+                            <p>Our white-glove delivery network ensures premium furniture arrives safely to over 40
+                                countries worldwide.</p>
+                            <a href="error.html" class="card-link-btn">Learn More <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="info-card-img">
+                            <img src="../assets/Home2/grid3.webp" alt="Bespoke Design" loading="lazy">
+                        </div>
+                        <div class="info-card-body">
+                            <h4>Bespoke Design</h4>
+                            <p>Work with our in-house architects to customize fabrics, dimensions, and finishes to your
+                                exact specifications.</p>
+                            <a href="error.html" class="card-link-btn">Learn More <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="info-card-img">
+                            <img src="../assets/Home2/grid4.webp" alt="Lifetime Warranty" loading="lazy">
+                        </div>
+                        <div class="info-card-body">
+                            <h4>Lifetime Warranty</h4>
+                            <p>We stand by our craftsmanship. Every hardwood frame and structural component is
+                                guaranteed for life — no exceptions.</p>
+                            <a href="error.html" class="card-link-btn">Learn More <i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
                 </div>
             </div>
         </section>
@@ -254,6 +319,7 @@
     </main>
 
     <footer>
+
         <div class="footerWrap container">
             <div class="box">
                 <div class="logoContainer">
@@ -317,169 +383,249 @@
                             class="fa-brands fa-instagram"></i></a>
                     <a href="error.html" class="socialLink" aria-label="Facebook"><i
                             class="fa-brands fa-facebook-f"></i></a>
-                    <a href="error.html" class="socialLink" aria-label="Website"><i
-                            class="fa-solid fa-globe"></i></a>
+                    <a href="error.html" class="socialLink" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom container">
-            <p>© 2026 FurniStyle Premium Furniture. All rights reserved.</p>
+            <p>&copy; 2026 FurniStyle Premium Furniture. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // --- Full Page Loader Interceptor ---
-        window.addEventListener('load', () => {
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* ── Page Loader ── */
             const loader = document.getElementById('page-loader');
-            loader.style.opacity = '0';
-            setTimeout(() => { loader.style.display = 'none'; }, 300);
-        });
+            window.addEventListener('load', () => {
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.display = 'none'; }, 400);
+            });
 
-        document.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href && href !== '#' && !href.startsWith('javascript') && !this.classList.contains('cart-nav-icon')) {
+            /* ── Page-transition on link clicks ── */
+            document.querySelectorAll('a[href]').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#' && !href.startsWith('javascript') && !this.classList.contains('cart-nav-icon') && !href.startsWith('http')) {
+                        e.preventDefault();
+                        loader.style.display = 'flex';
+                        requestAnimationFrame(() => { loader.style.opacity = '1'; });
+                        setTimeout(() => { window.location.href = href; }, 400);
+                    }
+                });
+            });
+
+            /* ── Hamburger Menu ── */
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const closeBtn = document.getElementById('close-btn');
+            const navLinks = document.getElementById('nav-links');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const dropdownBtn = document.getElementById('dropdown-toggle-btn');
+            const homeNavLink = document.getElementById('home-nav-link');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            const body = document.body;
+
+            const openMenu = () => { navLinks.classList.add('showMenu'); menuOverlay.style.display = 'block'; body.classList.add('menu-open'); };
+            const closeMenu = () => { navLinks.classList.remove('showMenu'); menuOverlay.style.display = 'none'; body.classList.remove('menu-open'); dropdownMenu.classList.remove('showDropdown'); };
+
+            hamburgerBtn.addEventListener('click', (e) => { e.stopPropagation(); openMenu(); });
+            closeBtn.addEventListener('click', closeMenu);
+            menuOverlay.addEventListener('click', closeMenu);
+            document.addEventListener('click', (e) => {
+                if (body.classList.contains('menu-open') && !navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) closeMenu();
+            });
+            dropdownBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); dropdownMenu.classList.toggle('showDropdown'); });
+            homeNavLink.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) { e.preventDefault(); e.stopPropagation(); dropdownMenu.classList.toggle('showDropdown'); }
+            });
+
+            /* ── Theme Toggle ── */
+            const themeBtn = document.getElementById('theme-toggle-btn');
+            const themeIcon = document.getElementById('theme-icon');
+
+            const syncIcon = () => {
+                if (body.classList.contains('light-theme')) {
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                } else {
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                }
+            };
+            syncIcon();
+
+            themeBtn.addEventListener('click', () => {
+                body.classList.toggle('light-theme');
+                localStorage.setItem('furniture-theme', body.classList.contains('light-theme') ? 'light' : 'dark');
+                syncIcon();
+            });
+
+            /* ── Sticky Header + Scroll-to-top ── */
+            const header = document.getElementById('main-header');
+            const scrollBtn = document.getElementById('scrollToTopBtn');
+
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('sticky', window.scrollY > 50);
+                if (scrollBtn) scrollBtn.classList.toggle('visible', window.scrollY > 400);
+            });
+            if (scrollBtn) scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+            /* ── Circular Carousel ── */
+            const imgs = document.querySelectorAll('.circle-img');
+            let current = 0;
+
+            const goTo = (idx) => {
+                imgs[current].classList.remove('active');
+                current = (idx + imgs.length) % imgs.length;
+                imgs[current].classList.add('active');
+            };
+
+            if (imgs.length > 1) setInterval(() => goTo(current + 1), 3500);
+
+            /* ── Footer Newsletter ── */
+            const form = document.getElementById('footer-newsletter-form');
+            const email = document.getElementById('newsletter-email');
+            const errEl = document.getElementById('newsletter-error');
+            const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (form) {
+                form.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    const loader = document.getElementById('page-loader');
-                    loader.style.display = 'flex';
-                    setTimeout(() => { loader.style.opacity = '1'; }, 10);
-                    setTimeout(() => { window.location.href = href; }, 400);
-                }
+                    errEl.textContent = '';
+                    email.style.borderColor = '';
+                    if (!email.value.trim()) {
+                        errEl.textContent = 'Email is required.';
+                        email.style.borderColor = 'var(--error-color)';
+                    } else if (!emailRe.test(email.value.trim())) {
+                        errEl.textContent = 'Please enter a valid email address.';
+                        email.style.borderColor = 'var(--error-color)';
+                    } else {
+                        window.location.href = 'error.html';
+                    }
+                });
+            }
+
+            /* ════════════════════════════════════════
+               GSAP
+            ════════════════════════════════════════ */
+            if (typeof gsap === 'undefined') return;
+            gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+            /* 1 · Hero title typing effect */
+            const heroTitle = document.getElementById('hero-title');
+            if (heroTitle) {
+                const full = heroTitle.textContent.trim();
+                heroTitle.textContent = '';
+                gsap.set('#hero-para, #hero-btns', { opacity: 0, y: 25 });
+                gsap.to(heroTitle, {
+                    text: { value: full, delimiter: '' },
+                    duration: 2,
+                    ease: 'none',
+                    delay: 0.4,
+                    onComplete: () => {
+                        gsap.to('#hero-para', { opacity: 1, y: 0, duration: 0.8 });
+                        gsap.to('#hero-btns', { opacity: 1, y: 0, duration: 0.8, delay: 0.3 });
+                    }
+                });
+            }
+
+            /* 1b · Collections heading typing */
+            const colHead = document.getElementById('collections-heading');
+            if (colHead) {
+                const colText = 'Curated Collections';
+                colHead.textContent = '';
+                ScrollTrigger.create({
+                    trigger: colHead,
+                    start: 'top 85%',
+                    once: true,
+                    onEnter: () => {
+                        gsap.to(colHead, {
+                            text: { value: colText, delimiter: '' },
+                            duration: 1.4,
+                            ease: 'none'
+                        });
+                    }
+                });
+            }
+
+            /* 2 · Section-reveal helper */
+            const reveal = (targets, vars = {}) => {
+                const el = document.querySelectorAll(targets);
+                if (!el.length) return;
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el[0], start: 'top 85%', toggleActions: 'play none none none' },
+                    opacity: 0,
+                    y: 40,
+                    duration: 0.9,
+                    ease: 'power2.out',
+                    stagger: 0.12,
+                    ...vars
+                });
+            };
+
+            reveal('.h2-yt-data .eyebrow-label');
+            reveal('.h2-yt-data .section-heading');
+            reveal('.h2-yt-data .section-sub');
+
+            reveal('.data-item', { stagger: 0.18 });
+            reveal('.glow-frame');
+            reveal('.fixed-content .eyebrow-label');
+            reveal('.fixed-content .section-heading');
+            reveal('.fixed-content .section-sub');
+            reveal('.stat-card', { stagger: 0.15, y: 30 });
+            reveal('.fixed-actions');
+            reveal('.collections-text .eyebrow-label');
+            reveal('.accent-bar', { scaleX: 0, transformOrigin: 'left center', y: 0 });
+            reveal('.collections-text .section-sub', { stagger: 0.1 });
+            reveal('.btn-teal-outline');
+            reveal('.circle-wrap', { x: 50, y: 0 });
+            reveal('.h2-info .eyebrow-label');
+            reveal('.h2-info .section-heading');
+            reveal('.h2-info .section-sub');
+
+            /* Staggering the info cards */
+            gsap.from('.info-card', {
+                scrollTrigger: {
+                    trigger: '.info-grid',
+                    start: 'top 95%',        /* fires very early */
+                    once: true,              /* never reverses */
+                    toggleActions: 'play none none none'
+                },
+                y: 40,
+                opacity: 0,
+                duration: 0.75,
+                stagger: 0.15,
+                ease: 'power2.out',
+                clearProps: 'all'            /* removes inline styles after animation */
             });
-        });
 
-        // --- Hamburger Menu Logic ---
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const closeBtn = document.getElementById('close-btn');
-        const navLinks = document.getElementById('nav-links');
-        const menuOverlay = document.getElementById('menu-overlay');
-        const dropdownToggleBtn = document.getElementById('dropdown-toggle-btn');
-        const homeNavLink = document.getElementById('home-nav-link');
-        const dropdownMenu = document.getElementById('dropdown-menu');
-        const body = document.body;
-
-        function openMenu() {
-            navLinks.classList.add('showMenu');
-            menuOverlay.style.display = 'block';
-            body.classList.add('menu-open');
-        }
-
-        function closeMenu() {
-            navLinks.classList.remove('showMenu');
-            menuOverlay.style.display = 'none';
-            body.classList.remove('menu-open');
-            dropdownMenu.classList.remove('showDropdown');
-        }
-
-        hamburgerBtn.addEventListener('click', (e) => { e.stopPropagation(); openMenu(); });
-        closeBtn.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
-        document.addEventListener('click', (e) => {
-            if (body.classList.contains('menu-open')) {
-                if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) { closeMenu(); }
-            }
-        });
-        dropdownToggleBtn.addEventListener('click', (e) => {
-            e.preventDefault(); e.stopPropagation();
-            dropdownMenu.classList.toggle('showDropdown');
-        });
-        homeNavLink.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault(); e.stopPropagation();
-                dropdownMenu.classList.toggle('showDropdown');
-            }
-        });
-
-        // --- Theme Toggle ---
-        const themeToggleBtn = document.getElementById('theme-toggle-btn');
-        const themeIcon = document.getElementById('theme-icon');
-
-        if (document.body.classList.contains('light-theme')) {
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-        } else {
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            if (document.body.classList.contains('light-theme')) {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                localStorage.setItem('furniture-theme', 'light');
-            } else {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                localStorage.setItem('furniture-theme', 'dark');
-            }
-        });
-
-        // --- Sticky Header & Scroll To Top ---
-        const header = document.getElementById('main-header');
-        const scrollBtn = document.getElementById('scrollToTopBtn');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) header.classList.add('sticky');
-            else header.classList.remove('sticky');
-
-            if (window.scrollY > 300) scrollBtn.classList.add('visible');
-            else scrollBtn.classList.remove('visible');
-        });
-        scrollBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // --- Circular Carousel Logic ---
-        const circleSlides = document.querySelectorAll('.circle-slide');
-        let currentCircle = 0;
-
-        function nextCircleSlide() {
-            circleSlides[currentCircle].classList.remove('active');
-            currentCircle = (currentCircle + 1) % circleSlides.length;
-            circleSlides[currentCircle].classList.add('active');
-        }
-        setInterval(nextCircleSlide, 3500);
-
-        // --- Footer Newsletter Validation ---
-        const footerForm = document.getElementById('footer-newsletter-form');
-        const newsletterEmail = document.getElementById('newsletter-email');
-        const newsletterError = document.getElementById('newsletter-error');
-
-        const isValidEmail = (email) => {
-            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        };
-
-        footerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            newsletterError.innerText = '';
-            newsletterEmail.style.borderColor = '';
-
-            if (newsletterEmail.value.trim() === '') {
-                newsletterError.innerText = 'Email is required';
-                newsletterEmail.style.borderColor = 'var(--error-color)';
-            } else if (!isValidEmail(newsletterEmail.value.trim())) {
-                newsletterError.innerText = 'Please enter a valid email address';
-                newsletterEmail.style.borderColor = 'var(--error-color)';
-            } else {
-                window.location.href = 'error.html';
-            }
-        });
-
-        // --- Fade In Animation ---
-        const fadeElems = document.querySelectorAll('.fade-in, .fade-in-up');
-        const fadeInObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
+            /* 3 · Animated stat counters */
+            document.querySelectorAll('.stat-num').forEach(el => {
+                const target = parseInt(el.dataset.target, 10);
+                const suffix = el.nextElementSibling?.textContent || '';
+                ScrollTrigger.create({
+                    trigger: el,
+                    start: 'top 90%',
+                    once: true,
+                    onEnter: () => {
+                        const obj = { val: 0 };
+                        gsap.to(obj, {
+                            val: target,
+                            duration: 2.5,
+                            ease: 'power1.out',
+                            onUpdate: () => { el.textContent = Math.floor(obj.val).toLocaleString(); }
+                        });
+                    }
+                });
             });
-        }, { threshold: 0.1 });
-        fadeElems.forEach(elem => fadeInObserver.observe(elem));
+
+            /* 4 · Floating ring */
+            const ring = document.getElementById('circle-ring');
+            if (ring) {
+                gsap.to(ring, { y: 16, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+            }
+        });
     </script>
+
 </body>
 
 </html>
