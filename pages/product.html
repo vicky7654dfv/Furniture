@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Selling Products | FurniStyle</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230d9488' d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/product.css">
+</head>
+
+<body>
+    <script>
+        if (localStorage.getItem('furniture-theme') !== 'dark') {
+            document.body.classList.add('light-theme');
+            localStorage.setItem('furniture-theme', 'light');
+        }
+    </script>
+
+    <div id="page-loader">
+        <div class="loader-content">
+            <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="loader-img"
+                onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'">
+            <p>Processing Request...</p>
+        </div>
+    </div>
+
+    <!-- Toast Component for added feedback -->
+    <div id="cart-toast" class="toast">
+        <div class="toast-icon"><i class="fa-solid fa-check"></i></div>
+        <div class="toast-text">Quantity successfully updated!</div>
+    </div>
+
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- HEADER -->
+    <header class="headerWrap" id="main-header">
+        <div class="imgWrap">
+            <a href="../index.html">
+                <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="site-logo"
+                    onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'">
+            </a>
+        </div>
+
+        <div class="hamburger" id="hamburger-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="linksWrap" id="nav-links">
+            <div class="topCloseBtn" id="close-btn">
+                <i class="fa-solid fa-times"></i>
+            </div>
+            <ul>
+                <li class="dropdown" id="home-dropdown">
+                    <div class="dropdownHeader">
+                        <a href="javascript:void(0)" class="homePageLink" id="home-nav-link">Home</a>
+                        <button class="dropdownToggle" aria-label="Toggle dropdown" id="dropdown-toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <ul class="dropdownMenu" id="dropdown-menu">
+                        <li><a href="../index.html">Home 1</a></li>
+                        <li><a href="home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="dashboard.html">DashBoard</a></li>
+                <li><a href="product.html" class="active">Product</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li>
+                    <a href="checkout.html" aria-label="Checkout" class="cart-nav-icon checkout-text">
+                        Checkout<sup id="cart-counter">3</sup>
+                    </a>
+                </li>
+                <li class="theme-toggle-li">
+                    <button id="theme-toggle-btn" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-moon" id="theme-icon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="menuOverlay" id="menu-overlay"></div>
+    </header>
+
+    <!-- MAIN PRODUCT CONTENT -->
+    <main class="product-main">
+        <div class="product-page-header container fade-in">
+            <h1 class="page-title">Top Selling Products</h1>
+            <h4 class="page-subtitle">Curated excellence for your modern home. Handpicked for perfection.</h4>
+        </div>
+
+        <!-- Section 1: Top Selling Carousel (3 Products) -->
+        <section class="top-selling-carousel section-padding fade-in">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <h2>Trending Now</h2>
+                    <p>Our most loved pieces, sliding right into your heart.</p>
+                </div>
+
+                <div class="prod-carousel-wrapper">
+                    <!-- Carousel Slide 1 -->
+                    <div class="prod-card carousel-card active" id="prod-slide-1">
+                        <div class="prod-img-wrap">
+                            <img src="../assets/Product/1.webp" alt="Velvet Sofa">
+                            <span class="prod-badge bg-primary">Best Seller</span>
+                        </div>
+                        <div class="prod-details">
+                            <h3>Emerald Velvet Sofa</h3>
+                            <p class="prod-desc">Luxurious deep green velvet with brass accents.</p>
+                            <div class="prod-price">$1,299.00</div>
+                            <div class="qty-controller">
+                                <button class="qty-btn decrement" aria-label="Decrease quantity"><i
+                                        class="fa-solid fa-minus"></i></button>
+                                <span class="qty-display">0</span>
+                                <button class="qty-btn increment" aria-label="Increase quantity"><i
+                                        class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Slide 2 -->
+                    <div class="prod-card carousel-card" id="prod-slide-2">
+                        <div class="prod-img-wrap">
+                            <img src="../assets/Product/2.webp" alt="Lounge Chair">
+                            <span class="prod-badge bg-accent">Trending</span>
+                        </div>
+                        <div class="prod-details">
+                            <h3>Modern Lounge Chair</h3>
+                            <p class="prod-desc">Ergonomic design meets contemporary aesthetics.</p>
+                            <div class="prod-price">$499.00</div>
+                            <div class="qty-controller">
+                                <button class="qty-btn decrement" aria-label="Decrease quantity"><i
+                                        class="fa-solid fa-minus"></i></button>
+                                <span class="qty-display">0</span>
+                                <button class="qty-btn increment" aria-label="Increase quantity"><i
+                                        class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Slide 3 -->
+                    <div class="prod-card carousel-card" id="prod-slide-3">
+                        <div class="prod-img-wrap">
+                            <img src="../assets/Product/3.webp" alt="Dining Table">
+                            <span class="prod-badge bg-primary">Premium</span>
+                        </div>
+                        <div class="prod-details">
+                            <h3>Oak Dining Set</h3>
+                            <p class="prod-desc">Handcrafted solid oak with seating for six.</p>
+                            <div class="prod-price">$2,150.00</div>
+                            <div class="qty-controller">
+                                <button class="qty-btn decrement" aria-label="Decrease quantity"><i
+                                        class="fa-solid fa-minus"></i></button>
+                                <span class="qty-display">0</span>
+                                <button class="qty-btn increment" aria-label="Increase quantity"><i
+                                        class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Controls -->
+                    <div class="prod-carousel-controls">
+                        <button class="nav-btn prev-btn" aria-label="Previous Product"><i
+                                class="fa-solid fa-chevron-left"></i></button>
+                        <div class="carousel-indicators">
+                            <span class="indicator active" data-slide="0"></span>
+                            <span class="indicator" data-slide="1"></span>
+                            <span class="indicator" data-slide="2"></span>
+                        </div>
+                        <button class="nav-btn next-btn" aria-label="Next Product"><i
+                                class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Creative Grid (3 Products) -->
+        <section class="top-selling-grid section-padding fade-in">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <h2>Signature Grid</h2>
+                    <p>Discover our exclusive structural masterpieces.</p>
+                </div>
+
+                <div class="creative-grid">
+                    <!-- Grid Item 1 (Featured Large) -->
+                    <div class="prod-card grid-large">
+                        <div class="prod-img-wrap">
+                            <img src="../assets/Product/4.webp" alt="Platform Bed">
+                        </div>
+                        <div class="prod-details-overlay">
+                            <div class="overlay-text">
+                                <h3>Mid-Century Platform Bed</h3>
+                                <div class="prod-price">$1,899.00</div>
+                            </div>
+                            <div class="qty-controller overlay-qty">
+                                <button class="qty-btn decrement" aria-label="Decrease quantity"><i
+                                        class="fa-solid fa-minus"></i></button>
+                                <span class="qty-display">0</span>
+                                <button class="qty-btn increment" aria-label="Increase quantity"><i
+                                        class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-column">
+                        <!-- Grid Item 2 (Small Top) -->
+                        <div class="prod-card grid-small">
+                            <div class="prod-img-wrap">
+                                <img src="../assets/Product/5.webp" alt="Floor Lamp">
+                            </div>
+                            <div class="prod-details">
+                                <h3>Brass Floor Lamp</h3>
+                                <div class="prod-price">$120.00</div>
+                                <div class="qty-controller">
+                                    <button class="qty-btn decrement" aria-label="Decrease quantity"><i
+                                            class="fa-solid fa-minus"></i></button>
+                                    <span class="qty-display">0</span>
+                                    <button class="qty-btn increment" aria-label="Increase quantity"><i
+                                            class="fa-solid fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid Item 3 (Small Bottom) -->
+                        <div class="prod-card grid-small">
+                            <div class="prod-img-wrap">
+                                <img src="../assets/Product/6.webp" alt="Accent Chair">
+                            </div>
+                            <div class="prod-details">
+                                <h3>Velvet Accent Chair</h3>
+                                <div class="prod-price">$380.00</div>
+                                <div class="qty-controller">
+                                    <button class="qty-btn decrement" aria-label="Decrease quantity"><i
+                                            class="fa-solid fa-minus"></i></button>
+                                    <span class="qty-display">0</span>
+                                    <button class="qty-btn increment" aria-label="Increase quantity"><i
+                                            class="fa-solid fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footerWrap container">
+            <div class="box">
+                <div class="logoContainer">
+                    <div class="logo">
+                        <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="footer-logo site-logo"
+                            onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'">
+                    </div>
+                </div>
+                <p class="footer-desc">
+                    FurniStyle is a global leader in accessible luxury furniture, dedicated to improving home aesthetics
+                    and comfort through meticulously crafted pieces and reliable support. We transform houses into
+                    elegant homes.
+                </p>
+            </div>
+
+            <div class="box">
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="dashboard.html">DashBoard</a></li>
+                    <li><a href="product.html">Product</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h4>Categories</h4>
+                <ul class="footer-links">
+                    <li><a href="error.html">Living Room Sets</a></li>
+                    <li><a href="error.html">Bedroom Collections</a></li>
+                    <li><a href="error.html">Dining Sets</a></li>
+                    <li><a href="error.html">Office Furniture</a></li>
+                    <li><a href="error.html">Outdoor & Patio</a></li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h4>Contact</h4>
+                <ul class="contactInfo">
+                    <li><i class="fa-solid fa-location-dot"></i><span> Stackly Headquarters, Los Angeles, CA</span></li>
+                    <li><i class="fa-solid fa-phone"></i> +1 888 123 4567</li>
+                    <li><i class="fa-solid fa-envelope"></i> design@stackly.auto</li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h4>Newsletter</h4>
+                <p>Subscribe for interior design tips & upcoming sales.</p>
+                <form id="footer-newsletter-form" class="subscribe-form" novalidate>
+                    <input type="email" id="newsletter-email" name="email" placeholder="Your Email"
+                        autocomplete="email">
+                    <span id="newsletter-error"
+                        style="color: var(--error-color); font-size: 0.8rem; display: block; margin-top: -5px; min-height: 15px;"></span>
+                    <button type="submit" class="btn btn-primary full-width">Subscribe</button>
+                </form>
+                <div class="media">
+                    <a href="error.html" class="socialLink" aria-label="Pinterest"><i
+                            class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="error.html" class="socialLink" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="error.html" class="socialLink" aria-label="Facebook"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="error.html" class="socialLink" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom container">
+            <p>&copy; 2026 FurniStyle Premium Furniture. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SHARED JS LOGIC & PRODUCT PAGE SPECIFIC SCRIPTS -->
+    <script>
+        // --- Shared Header & Loader Logic ---
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('page-loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.display = 'none'; }, 300);
+            }
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#' && !href.startsWith('javascript') && !this.classList.contains('cart-nav-icon')) {
+                    e.preventDefault();
+                    const loader = document.getElementById('page-loader');
+                    if (loader) {
+                        loader.style.display = 'flex';
+                        setTimeout(() => { loader.style.opacity = '1'; }, 10);
+                        setTimeout(() => { window.location.href = href; }, 400);
+                    } else {
+                        window.location.href = href;
+                    }
+                }
+            });
+        });
+
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const navLinks = document.getElementById('nav-links');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const dropdownToggleBtn = document.getElementById('dropdown-toggle-btn');
+        const homeNavLink = document.getElementById('home-nav-link');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const body = document.body;
+
+        function openMenu() {
+            navLinks.classList.add('showMenu');
+            if (menuOverlay) menuOverlay.style.display = 'block';
+            body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('showMenu');
+            if (menuOverlay) menuOverlay.style.display = 'none';
+            body.classList.remove('menu-open');
+            if (dropdownMenu) dropdownMenu.classList.remove('showDropdown');
+        }
+
+        if (hamburgerBtn) hamburgerBtn.addEventListener('click', (e) => { e.stopPropagation(); openMenu(); });
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+        document.addEventListener('click', (e) => {
+            if (body.classList.contains('menu-open') && navLinks) {
+                if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                    closeMenu();
+                }
+            }
+        });
+
+        if (dropdownToggleBtn) {
+            dropdownToggleBtn.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                if (dropdownMenu) dropdownMenu.classList.toggle('showDropdown');
+            });
+        }
+
+        if (homeNavLink) {
+            homeNavLink.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault(); e.stopPropagation();
+                    if (dropdownMenu) dropdownMenu.classList.toggle('showDropdown');
+                }
+            });
+        }
+
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (themeIcon && document.body.classList.contains('light-theme')) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else if (themeIcon) {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                if (document.body.classList.contains('light-theme')) {
+                    if (themeIcon) themeIcon.classList.remove('fa-sun');
+                    if (themeIcon) themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('furniture-theme', 'light');
+                } else {
+                    if (themeIcon) themeIcon.classList.remove('fa-moon');
+                    if (themeIcon) themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('furniture-theme', 'dark');
+                }
+            });
+        }
+
+        const header = document.getElementById('main-header');
+        const scrollBtn = document.getElementById('scrollToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (header) {
+                if (window.scrollY > 50) header.classList.add('sticky');
+                else header.classList.remove('sticky');
+            }
+            if (scrollBtn) {
+                if (window.scrollY > 500) scrollBtn.classList.add('visible');
+                else scrollBtn.classList.remove('visible');
+            }
+        });
+
+        if (scrollBtn) {
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        const footerForm = document.getElementById('footer-newsletter-form');
+        const newsletterEmail = document.getElementById('newsletter-email');
+        const newsletterError = document.getElementById('newsletter-error');
+
+        const isValidEmail = (email) => {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        };
+
+        if (footerForm) {
+            footerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                newsletterError.innerText = '';
+                newsletterEmail.style.borderColor = '';
+
+                if (newsletterEmail.value.trim() === '') {
+                    newsletterError.innerText = 'Email is required';
+                    newsletterEmail.style.borderColor = 'var(--error-color)';
+                } else if (!isValidEmail(newsletterEmail.value.trim())) {
+                    newsletterError.innerText = 'Please enter a valid email address';
+                    newsletterEmail.style.borderColor = 'var(--error-color)';
+                } else {
+                    const loader = document.getElementById('page-loader');
+                    if (loader) {
+                        loader.style.display = 'flex';
+                        setTimeout(() => { loader.style.opacity = '1'; }, 10);
+                        setTimeout(() => { window.location.href = 'error.html'; }, 400);
+                    } else {
+                        window.location.href = 'error.html';
+                    }
+                }
+            });
+        }
+
+        const fadeElems = document.querySelectorAll('.fade-in');
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeElems.forEach(elem => fadeInObserver.observe(elem));
+
+        // --- Product Page Specific Logic ---
+
+        // 1. Quantity Controllers (+/-)
+        const quantityControllers = document.querySelectorAll('.qty-controller');
+        const toast = document.getElementById('cart-toast');
+
+        // We aren't globally mutating cart, but showing visual feedback locally
+        quantityControllers.forEach(controller => {
+            const btnDec = controller.querySelector('.decrement');
+            const btnInc = controller.querySelector('.increment');
+            const display = controller.querySelector('.qty-display');
+
+            let qty = 0;
+
+            btnInc.addEventListener('click', () => {
+                qty++;
+                display.innerText = qty;
+
+                // Show localized visual feedback toast
+                if (toast) {
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 2000);
+                }
+
+                // Add mini animation
+                display.style.transform = "scale(1.2)";
+                setTimeout(() => { display.style.transform = "scale(1)"; }, 150);
+            });
+
+            btnDec.addEventListener('click', () => {
+                if (qty > 0) {
+                    qty--;
+                    display.innerText = qty;
+                    // Add mini animation
+                    display.style.transform = "scale(0.8)";
+                    setTimeout(() => { display.style.transform = "scale(1)"; }, 150);
+                }
+            });
+        });
+
+        // 2. Custom Carousel Controller
+        const carouselCards = document.querySelectorAll('.carousel-card');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentSlide = 0;
+
+        function updateCarousel(index) {
+            // Remove active classes
+            carouselCards.forEach(card => card.classList.remove('active'));
+            indicators.forEach(ind => ind.classList.remove('active'));
+
+            // Add active class to target
+            carouselCards[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+
+        if (prevBtn && nextBtn && carouselCards.length > 0) {
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % carouselCards.length;
+                updateCarousel(currentSlide);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + carouselCards.length) % carouselCards.length;
+                updateCarousel(currentSlide);
+            });
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel(currentSlide);
+                });
+            });
+
+            // Auto slide every 5 seconds
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % carouselCards.length;
+                updateCarousel(currentSlide);
+            }, 5000);
+        }
+    </script>
+</body>
+
+</html>

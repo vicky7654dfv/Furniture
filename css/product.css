@@ -1,0 +1,511 @@
+/* product.css - Specialized styles for Top Selling Products */
+
+/* --- Page Header --- */
+.product-main {
+    padding-top: var(--topbar-height);
+    padding-bottom: 60px;
+    /* Extra space below the Signature grid */
+    min-height: calc(100vh - 300px);
+}
+
+.product-page-header {
+    text-align: center;
+    padding: 120px 20px 40px;
+    /* Increased breathing space */
+}
+
+/* Added extra breathing space for main sections */
+.top-selling-carousel,
+.top-selling-grid {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.product-page-header .page-title {
+    font-size: 2.8rem;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.product-page-header .page-subtitle {
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, var(--accent-teal), #3b82f6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- Shared Product Elements --- */
+.section-heading {
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    font-size: 2.2rem;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.section-heading p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.prod-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+.prod-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--accent-teal);
+}
+
+body.dark-theme .prod-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.prod-img-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-alt);
+}
+
+.prod-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    /* Force center alignment */
+    transition: transform 0.6s ease;
+}
+
+.prod-card:hover .prod-img-wrap img {
+    transform: scale(1.08);
+}
+
+.prod-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.bg-primary {
+    background: var(--accent-teal);
+}
+
+.bg-accent {
+    background: var(--warning);
+}
+
+.prod-details {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - auto);
+    /* flex filler */
+}
+
+.prod-details h3 {
+    font-size: 1.3rem;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.prod-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.prod-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-teal);
+    margin-bottom: 20px;
+}
+
+/* Quantity Controller */
+.qty-controller {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--input-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 5px;
+    margin-top: auto;
+    transition: border-color 0.3s ease;
+}
+
+.prod-card:hover .qty-controller {
+    border-color: var(--accent-teal);
+}
+
+.qty-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    color: var(--text-main);
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.qty-btn:hover {
+    background: var(--accent-teal);
+    color: white;
+    border-color: var(--accent-teal);
+    transform: scale(1.05);
+}
+
+.qty-btn:active {
+    transform: scale(0.95);
+}
+
+.qty-display {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    min-width: 40px;
+    text-align: center;
+    transition: transform 0.15s ease;
+    display: inline-block;
+}
+
+/* --- Section 1: Custom Carousel --- */
+.prod-carousel-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px 0 60px;
+}
+
+.carousel-card {
+    display: none;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Carousel Inner Layout overriding card default */
+.carousel-card .prod-img-wrap {
+    aspect-ratio: 16/9;
+}
+
+.carousel-card.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideIn 0.6s forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(50px) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.prod-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.nav-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    color: var(--text-main);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-btn:hover {
+    background: var(--accent-teal);
+    color: white;
+    border-color: var(--accent-teal);
+    transform: scale(1.1);
+}
+
+.carousel-indicators {
+    display: flex;
+    gap: 10px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--accent-teal);
+    width: 25px;
+    border-radius: 10px;
+}
+
+/* Desktop horizontal layout for carousel cards */
+@media (min-width: 768px) {
+    .prod-carousel-wrapper {
+        max-width: 850px;
+    }
+
+    .carousel-card {
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        height: 420px;
+        /* Fixed height for the Trending Now box */
+    }
+
+    .carousel-card.active {
+        display: flex;
+    }
+
+    .carousel-card .prod-img-wrap {
+        width: 55%;
+        height: 100%;
+        aspect-ratio: auto;
+        min-height: auto;
+    }
+
+    .carousel-card .prod-details {
+        width: 45%;
+        height: 100%;
+        padding: 40px;
+        justify-content: center;
+    }
+}
+
+/* --- Section 2: Creative Grid --- */
+.creative-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Featured Large Card styling */
+.grid-large {
+    position: relative;
+    border-radius: 20px;
+}
+
+.grid-large .prod-img-wrap {
+    aspect-ratio: auto;
+    height: 500px;
+}
+
+.grid-large::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.prod-details-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.overlay-text h3 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.overlay-text .prod-price {
+    color: #ffd166;
+    /* Stand out over dark background */
+    margin-bottom: 0;
+    font-size: 1.8rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.overlay-qty {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-color: rgba(255, 255, 255, 0.2);
+    min-width: 140px;
+}
+
+.overlay-qty .qty-btn {
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border-color: transparent;
+}
+
+.overlay-qty .qty-btn:hover {
+    background: var(--accent-teal);
+}
+
+.overlay-qty .qty-display {
+    color: white;
+}
+
+/* Small Cards in Column */
+.grid-small .prod-img-wrap {
+    aspect-ratio: 16/10;
+}
+
+/* Complex Grid Desktop */
+@media (min-width: 1024px) {
+    .creative-grid {
+        grid-template-columns: 1.8fr 1fr;
+    }
+
+    .grid-large .prod-img-wrap {
+        height: 100%;
+        min-height: 450px;
+        /* Shrunk the long box size */
+    }
+}
+
+/* Tablet & Mobile Media Queries */
+@media (max-width: 1023px) {
+    .grid-large .prod-img-wrap {
+        height: 450px;
+        /* Maintain shrunken height on tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-page-header .page-title {
+        font-size: 2.2rem;
+    }
+
+    .section-heading h2 {
+        font-size: 1.8rem;
+    }
+
+    .prod-details-overlay {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 25px;
+    }
+
+    .overlay-qty {
+        width: 100%;
+    }
+
+    .prod-carousel-controls {
+        gap: 15px;
+        /* Tighter controls */
+    }
+
+    .grid-large .prod-img-wrap {
+        height: 400px;
+    }
+}
+
+@media (max-width: 425px) {
+    .product-main {
+        padding-bottom: 40px;
+        /* Space below grid for mobile */
+    }
+
+    .product-page-header {
+        padding: 100px 15px 40px;
+        /* Extra space above title for mobile */
+    }
+
+    .product-page-header .page-title {
+        font-size: 1.8rem;
+    }
+
+    .top-selling-carousel,
+    .top-selling-grid {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .creative-grid {
+        gap: 20px;
+    }
+
+    .prod-details {
+        padding: 15px;
+    }
+
+    .overlay-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .grid-large .prod-img-wrap {
+        height: 350px;
+    }
+}

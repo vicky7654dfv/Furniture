@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FurniStyle | Premium Services</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230d9488' d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/services.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <script>
+    // Set light theme as the default
+    if (localStorage.getItem("furniture-theme") !== "dark") {
+      document.body.classList.add("light-theme");
+      localStorage.setItem("furniture-theme", "light");
+    }
+  </script>
+
+  <div id="page-loader">
+    <div class="loader-content">
+      <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="loader-img" onerror="
+            this.src =
+              'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'
+          " />
+      <p>Processing Request...</p>
+    </div>
+  </div>
+
+  <button id="scrollToTopBtn" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <header class="headerWrap" id="main-header">
+    <div class="imgWrap">
+      <a href="../index.html">
+        <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="site-logo" onerror="
+              this.src =
+                'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'
+            " />
+      </a>
+    </div>
+
+    <div class="hamburger" id="hamburger-btn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <nav class="linksWrap" id="nav-links">
+      <div class="topCloseBtn" id="close-btn">
+        <i class="fa-solid fa-times"></i>
+      </div>
+      <ul>
+        <li class="dropdown" id="home-dropdown">
+          <div class="dropdownHeader">
+            <a href="javascript:void(0)" class="homePageLink" id="home-nav-link">Home</a>
+            <button class="dropdownToggle" aria-label="Toggle dropdown" id="dropdown-toggle-btn">
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+          </div>
+          <ul class="dropdownMenu" id="dropdown-menu">
+            <li><a href="../index.html">Home 1</a></li>
+            <li><a href="./home2.html">Home 2</a></li>
+          </ul>
+        </li>
+        <li><a href="./about.html">About Us</a></li>
+        <li><a href="./dashboard.html">DashBoard</a></li>
+        <li><a href="./product.html">Product</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./blog.html">Blog</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="./signup.html">Sign Up</a></li>
+        <li><a href="./login.html">Login</a></li>
+        <li>
+          <a href="./checkout.html" aria-label="Checkout" class="cart-nav-icon checkout-text">
+            Checkout<sup>3</sup>
+          </a>
+        </li>
+        <li class="theme-toggle-li">
+          <button id="theme-toggle-btn" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon" id="theme-icon"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="menuOverlay" id="menu-overlay"></div>
+  </header>
+
+  <main>
+    <!-- SECTION 1: HERO VIDEO -->
+    <section class="services-hero">
+      <div class="hero-video-bg">
+        <!-- Using a placeholder video URL since user requested a video background -->
+        <video autoplay muted loop playsinline id="hero-vid">
+          <source src="../assets/Services/bgService.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content container">
+        <h2>Our Premium Services</h2>
+        <p>
+          Elevate your living spaces with our bespoke interior design,
+          white-glove delivery, and consultation services.
+        </p>
+        <div class="hero-btns">
+          <a href="./error.html" class="btn btn-primary">Book Consultation</a>
+          <a href="./error.html" class="btn btn-outline">Explore Capabilities</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CREATIVE SERVICES GRID -->
+    <section class="services-grid-section">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="subheading">What We Do</span>
+          <h2>Our Core Services</h2>
+          <p>
+            We provide end-to-end furniture and interior solutions tailored to
+            your unique lifestyle and aesthetic preferences.
+          </p>
+        </div>
+
+        <div class="creative-grid">
+          <!-- Service 1: Large Featured -->
+          <div class="grid-item item-large">
+            <img src="../assets/Services/1.webp" alt="Interior Design" />
+            <div class="item-content">
+              <div class="icon-wrap">
+                <i class="fa-solid fa-pen-ruler"></i>
+              </div>
+              <h3>Bespoke Interior Design</h3>
+              <p>
+                Complete room makeovers guided by our expert in-house
+                designers.
+              </p>
+              <a href="./error.html" class="grid-link">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Service 2: Standard Tall -->
+          <div class="grid-item item-tall">
+            <img src="../assets/Services/2.webp" alt="Space Planning" />
+            <div class="item-content">
+              <div class="icon-wrap">
+                <i class="fa-solid fa-vector-square"></i>
+              </div>
+              <h3>Space Planning</h3>
+              <p>Optimizing flow and functionality for any floor plan.</p>
+              <a href="./error.html" class="grid-link">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Service 3: Standard Square -->
+          <div class="grid-item item-square">
+            <img src="../assets/Services/3.webp" alt="Custom Furniture" />
+            <div class="item-content">
+              <div class="icon-wrap"><i class="fa-solid fa-hammer"></i></div>
+              <h3>Custom Upholstery</h3>
+              <p>Select your own premium fabrics and finishes.</p>
+              <a href="./error.html" class="grid-link">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Service 4: Standard Wide -->
+          <div class="grid-item item-wide">
+            <img src="../assets/Services/4.webp" alt="White Glove Delivery" />
+            <div class="item-content">
+              <div class="icon-wrap">
+                <i class="fa-solid fa-truck-fast"></i>
+              </div>
+              <h3>White Glove Delivery</h3>
+              <p>
+                Careful transport, assembly, and placement in your room of
+                choice.
+              </p>
+              <a href="./error.html" class="grid-link">Explore Service <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PRICING TABLE -->
+    <section class="pricing-section">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="subheading">Investment</span>
+          <h2>Service Packages</h2>
+          <p>Transparent pricing tailored to projects of any scale.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Basic Tier -->
+          <div class="pricing-card">
+            <div class="tier-header">
+              <h3>Consultation</h3>
+              <div class="price"><span>$</span>150<span>/hr</span></div>
+              <p>
+                Perfect for quick design advice or space planning validation.
+              </p>
+            </div>
+            <ul class="tier-features">
+              <li>
+                <i class="fa-solid fa-check"></i> 1 Hour Virtual Meeting
+              </li>
+              <li><i class="fa-solid fa-check"></i> Color Palette Advice</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Spatial Flow Suggestions
+              </li>
+              <li class="disabled">
+                <i class="fa-solid fa-times"></i> 3D Renderings
+              </li>
+              <li class="disabled">
+                <i class="fa-solid fa-times"></i> Personal Shopper
+              </li>
+            </ul>
+            <a href="./error.html" class="btn btn-outline-teal full-width">Book Now</a>
+          </div>
+
+          <!-- Popular Tier -->
+          <div class="pricing-card popular">
+            <div class="popular-badge">Most Popular</div>
+            <div class="tier-header">
+              <h3>Room Makeover</h3>
+              <div class="price"><span>$</span>1,200<span>/room</span></div>
+              <p>
+                Complete redesign blueprint for a single room in your home.
+              </p>
+            </div>
+            <ul class="tier-features">
+              <li><i class="fa-solid fa-check"></i> In-home Consultation</li>
+              <li><i class="fa-solid fa-check"></i> Custom Floor Plan</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Furniture Sourcing List
+              </li>
+              <li><i class="fa-solid fa-check"></i> 1x 3D Rendering</li>
+              <li class="disabled">
+                <i class="fa-solid fa-times"></i> White-glove Setup
+              </li>
+            </ul>
+            <a href="./error.html" class="btn btn-primary full-width">Get Started</a>
+          </div>
+
+          <!-- Premium Tier -->
+          <div class="pricing-card">
+            <div class="tier-header">
+              <h3>Full Home Design</h3>
+              <div class="price"><span>$</span>5,000<span>+</span></div>
+              <p>The ultimate turn-key solution for your entire residence.</p>
+            </div>
+            <ul class="tier-features">
+              <li><i class="fa-solid fa-check"></i> Dedicated Design Team</li>
+              <li>
+                <i class="fa-solid fa-check"></i> Comprehensive Renderings
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Custom Millwork Sourcing
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Contractor Coordination
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i> Full White-glove Setup
+              </li>
+            </ul>
+            <a href="./error.html" class="btn btn-outline-teal full-width">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: SPLIT CONTENT & VERTICAL VIDEO -->
+    <section class="split-service-section">
+      <div class="container split-container">
+        <!-- Left Content -->
+        <div class="split-content-left">
+          <h1>Transform Your Personal Dimensions</h1>
+          <p>
+            Experience the perfect harmony of form and function. Our expert
+            curators travel the globe to source the most exquisite pieces,
+            materials, and concepts, bringing unparalleled sophistication
+            directly into your home. Let us redefine your everyday living
+            experience with spaces designed around you.
+          </p>
+          <a href="./error.html" class="btn btn-primary">Start Your Project</a>
+        </div>
+
+        <!-- Right Vertical Video -->
+        <div class="split-video-right">
+          <div class="vertical-video-wrapper">
+            <!-- Colorful animated border gradient will be applied to this wrapper -->
+            <video autoplay muted loop playsinline class="vertical-vid">
+              <source src="../assets/Services/VerticalVideo.mp4" type="video/mp4" />
+            </video>
+            <div class="video-dark-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FAQ -->
+    <section class="faq-section">
+      <div class="container container-small">
+        <div class="section-heading text-center">
+          <span class="subheading">Common Inquiries</span>
+          <h2>Frequently Asked Questions</h2>
+          <p>
+            Everything you need to know about our products, delivery, and
+            services.
+          </p>
+        </div>
+
+        <div class="faq-accordion" id="faq-accordion">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How does your Bespoke Interior Design service work?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Our bespoke interior design service starts with an in-depth
+                consultation to understand your aesthetic preferences and
+                space requirements. Our expert design team then creates custom
+                layout plans, 3D renderings, and curated product lists. Once
+                approved, we handle everything from sourcing to white-glove
+                installation.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is included in the White-Glove Delivery?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Our premium White-Glove Delivery goes beyond basic shipping.
+                Our delivery team will carefully unbox, inspect, and assemble
+                your new furniture in your designated room of choice. We also
+                handle the removal of all packaging materials so you can enjoy
+                your new space immediately without the hassle of cleanup.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I customize the fabrics on your sofas?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Absolutely. We offer an extensive selection of premium
+                upholstery options including Italian leathers, performance
+                velvets, and durable woven linens. You can request fabric
+                swatches to experience the texture and color in your own home
+                before making a final decision.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do you provide services for commercial spaces?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes! While we are renowned for luxury residential projects,
+                our FurniStyle Commercial division specializes in high-end
+                office spaces, boutique hotels, and retail environments. We
+                offer dedicated account managers and bulk pricing terms for
+                B2B clients.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How long does custom furniture production take?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Standard items typically ship within 5-7 business days. Custom
+                upholstery and bespoke millwork orders usually require 6 to 8
+                weeks of careful craftsmanship by our artisans. Your dedicated
+                design consultant will provide you with a precise timeline
+                upon order confirmation.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is your return and cancellation policy?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                We accept returns on standard items within 30 days of delivery
+                for a full refund, minus a competitive restocking fee. Custom
+                pieces and clearance items are final sale and non-refundable.
+                Cancellations on custom orders must be made within 48 hours of
+                placing the order.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // FAQ Accordion Logic
+      document.addEventListener("DOMContentLoaded", () => {
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+          const question = item.querySelector(".faq-question");
+          question.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
+
+            // Close all others
+            faqItems.forEach((otherItem) => {
+              otherItem.classList.remove("active");
+              const otherAnswer = otherItem.querySelector(".faq-answer");
+              otherAnswer.style.maxHeight = null;
+            });
+
+            // Toggle current
+            if (!isActive) {
+              item.classList.add("active");
+              const answer = item.querySelector(".faq-answer");
+              answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+          });
+        });
+      });
+    </script>
+  </main>
+
+  <!-- Footer (exact from index.html) -->
+  <footer>
+    <div class="footerWrap container">
+      <div class="box">
+        <div class="logoContainer">
+          <div class="logo">
+            <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="footer-logo site-logo" onerror="
+                  this.src =
+                    'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'
+                " />
+          </div>
+        </div>
+        <p class="footer-desc">
+          FurniStyle is a global leader in accessible luxury furniture,
+          dedicated to improving home aesthetics and comfort through
+          meticulously crafted pieces and reliable support. We transform
+          houses into elegant homes.
+        </p>
+      </div>
+
+      <div class="box">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="./dashboard.html">DashBoard</a></li>
+          <li><a href="./product.html">Product</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h4>Categories</h4>
+        <ul class="footer-links">
+          <li><a href="./error.html">Living Room Sets</a></li>
+          <li><a href="./error.html">Bedroom Collections</a></li>
+          <li><a href="./error.html">Dining Sets</a></li>
+          <li><a href="./error.html">Office Furniture</a></li>
+          <li><a href="./error.html">Outdoor & Patio</a></li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h4>Contact</h4>
+        <ul class="contactInfo">
+          <li>
+            <i class="fa-solid fa-location-dot"></i><span> Stackly Headquarters, Los Angeles, CA</span>
+          </li>
+          <li><i class="fa-solid fa-phone"></i> +1 888 123 4567</li>
+          <li><i class="fa-solid fa-envelope"></i> design@stackly.auto</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h4>Newsletter</h4>
+        <p>Subscribe for interior design tips & upcoming sales.</p>
+        <form id="footer-newsletter-form" class="subscribe-form" novalidate>
+          <input type="email" id="newsletter-email" name="email" placeholder="Your Email" autocomplete="email" />
+          <span id="newsletter-error" style="
+                color: var(--error-color);
+                font-size: 0.8rem;
+                display: block;
+                margin-top: -5px;
+                min-height: 15px;
+              "></span>
+          <button type="submit" class="btn btn-primary full-width">
+            Subscribe
+          </button>
+        </form>
+        <div class="media">
+          <a href="./error.html" class="socialLink" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="./error.html" class="socialLink" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="./error.html" class="socialLink" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="./error.html" class="socialLink" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>&copy; 2026 FurniStyle Premium Furniture. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // --- Full Page Loader Interceptor ---
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("page-loader");
+      loader.style.opacity = "0";
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 300);
+    });
+
+    document.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+        if (
+          href &&
+          href !== "#" &&
+          !href.startsWith("javascript") &&
+          !this.classList.contains("cart-nav-icon")
+        ) {
+          e.preventDefault();
+          const loader = document.getElementById("page-loader");
+          loader.style.display = "flex";
+          setTimeout(() => {
+            loader.style.opacity = "1";
+          }, 10);
+          setTimeout(() => {
+            window.location.href = href;
+          }, 400);
+        }
+      });
+    });
+
+    // --- Hamburger Menu Logic ---
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const closeBtn = document.getElementById("close-btn");
+    const navLinks = document.getElementById("nav-links");
+    const menuOverlay = document.getElementById("menu-overlay");
+    const dropdownToggleBtn = document.getElementById("dropdown-toggle-btn");
+    const homeNavLink = document.getElementById("home-nav-link");
+    const dropdownMenu = document.getElementById("dropdown-menu");
+    const body = document.body;
+
+    function openMenu() {
+      navLinks.classList.add("showMenu");
+      menuOverlay.style.display = "block";
+      body.classList.add("menu-open");
+    }
+
+    function closeMenu() {
+      navLinks.classList.remove("showMenu");
+      menuOverlay.style.display = "none";
+      body.classList.remove("menu-open");
+      dropdownMenu.classList.remove("showDropdown");
+    }
+
+    hamburgerBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openMenu();
+    });
+    closeBtn.addEventListener("click", closeMenu);
+    menuOverlay.addEventListener("click", closeMenu);
+
+    document.addEventListener("click", (e) => {
+      if (body.classList.contains("menu-open")) {
+        if (
+          !navLinks.contains(e.target) &&
+          !hamburgerBtn.contains(e.target)
+        ) {
+          closeMenu();
+        }
+      }
+    });
+
+    dropdownToggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropdownMenu.classList.toggle("showDropdown");
+    });
+
+    homeNavLink.addEventListener("click", (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdownMenu.classList.toggle("showDropdown");
+      }
+    });
+
+    // --- Theme Toggle ---
+    const themeToggleBtn = document.getElementById("theme-toggle-btn");
+    const themeIcon = document.getElementById("theme-icon");
+
+    if (document.body.classList.contains("light-theme")) {
+      themeIcon.classList.remove("fa-sun");
+      themeIcon.classList.add("fa-moon");
+    } else {
+      themeIcon.classList.remove("fa-moon");
+      themeIcon.classList.add("fa-sun");
+    }
+
+    themeToggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-theme");
+      if (document.body.classList.contains("light-theme")) {
+        themeIcon.classList.remove("fa-sun");
+        themeIcon.classList.add("fa-moon");
+        localStorage.setItem("furniture-theme", "light");
+      } else {
+        themeIcon.classList.remove("fa-moon");
+        themeIcon.classList.add("fa-sun");
+        localStorage.setItem("furniture-theme", "dark");
+      }
+    });
+
+    // --- Sticky Header & Scroll To Top ---
+    const header = document.getElementById("main-header");
+    const scrollBtn = document.getElementById("scrollToTopBtn");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) header.classList.add("sticky");
+      else header.classList.remove("sticky");
+
+      if (window.scrollY > 500) scrollBtn.classList.add("visible");
+      else scrollBtn.classList.remove("visible");
+    });
+
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // --- Footer Newsletter Validation & Redirect ---
+    const footerForm = document.getElementById("footer-newsletter-form");
+    const newsletterEmail = document.getElementById("newsletter-email");
+    const newsletterError = document.getElementById("newsletter-error");
+
+    const isValidEmail = (email) => {
+      const re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    };
+
+    footerForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      newsletterError.innerText = "";
+      newsletterEmail.style.borderColor = "";
+
+      if (newsletterEmail.value.trim() === "") {
+        newsletterError.innerText = "Email is required";
+        newsletterEmail.style.borderColor = "var(--error-color)";
+      } else if (!isValidEmail(newsletterEmail.value.trim())) {
+        newsletterError.innerText = "Please enter a valid email address";
+        newsletterEmail.style.borderColor = "var(--error-color)";
+      } else {
+        const loader = document.getElementById("page-loader");
+        loader.style.display = "flex";
+        setTimeout(() => {
+          loader.style.opacity = "1";
+        }, 10);
+        setTimeout(() => {
+          window.location.href = "./error.html";
+        }, 400);
+      }
+    });
+  </script>
+</body>
+
+</html>

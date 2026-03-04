@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | FurniStyle</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230d9488' d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/about.css">
+</head>
+
+<body>
+    <script>
+        if (localStorage.getItem('furniture-theme') !== 'dark') {
+            document.body.classList.add('light-theme');
+            localStorage.setItem('furniture-theme', 'light');
+        }
+    </script>
+
+    <div id="page-loader">
+        <div class="loader-content">
+            <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="loader-img"
+                onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'">
+            <p>Processing Request...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="headerWrap" id="main-header">
+        <div class="imgWrap">
+            <a href="../index.html">
+                <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="site-logo"
+                    onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'">
+            </a>
+        </div>
+
+        <div class="hamburger" id="hamburger-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <nav class="linksWrap" id="nav-links">
+            <div class="topCloseBtn" id="close-btn">
+                <i class="fa-solid fa-times"></i>
+            </div>
+            <ul>
+                <li class="dropdown" id="home-dropdown">
+                    <div class="dropdownHeader">
+                        <a href="javascript:void(0)" class="homePageLink" id="home-nav-link">Home</a>
+                        <button class="dropdownToggle" aria-label="Toggle dropdown" id="dropdown-toggle-btn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <ul class="dropdownMenu" id="dropdown-menu">
+                        <li><a href="../index.html">Home 1</a></li>
+                        <li><a href="home2.html">Home 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="dashboard.html">DashBoard</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li>
+                    <a href="checkout.html" aria-label="Checkout" class="cart-nav-icon checkout-text">
+                        Checkout<sup id="cart-counter">3</sup>
+                    </a>
+                </li>
+                <li class="theme-toggle-li">
+                    <button id="theme-toggle-btn" aria-label="Toggle Theme">
+                        <i class="fa-solid fa-moon" id="theme-icon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="menuOverlay" id="menu-overlay"></div>
+    </header>
+
+    <main class="about-main">
+        <!-- Section 1: Hero Carousel -->
+        <section class="about-hero">
+            <div class="carousel-container">
+                <div class="about-slide slide-active">
+                    <img src="../assets/About/Hero/bg1.webp" alt="About Hero 1">
+                </div>
+                <div class="about-slide">
+                    <img src="../assets/About/Hero/bg2.webp" alt="About Hero 2">
+                </div>
+            </div>
+
+            <div class="container hero-content">
+                <h1 id="hero-typing-h1"></h1>
+                <p id="hero-typing-p"></p>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-num">15+</span>
+                        <span class="stat-label">Years of Excellence</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">50k+</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">120+</span>
+                        <span class="stat-label">Global Partners</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Our Team Grid -->
+        <section class="team-section section-padding">
+            <div class="container">
+                <div class="section-heading text-center fade-in">
+                    <span class="subheading">The Masterminds</span>
+                    <h2>Meet Our Creative Team</h2>
+                    <p>The visionary designers and craftsmen behind our signature collections.</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-card fade-in">
+                        <img src="../assets/About/Team/5.webp" alt="Lead Designer">
+                        <div class="team-info">
+                            <h3>Sarah Jenkins</h3>
+                            <p class="role">Lead Interior Architect</p>
+                            <p class="bio">With over 15 years in luxury design, Sarah masterminds our spatial planning
+                                division.</p>
+                            <div class="team-social">
+                                <a href="./error.html"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="./error.html"><i class="fa-brands fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-card fade-in">
+                        <img src="../assets/About/Team/3.webp" alt="Head of Product">
+                        <div class="team-info">
+                            <h3>Marcus Vance</h3>
+                            <p class="role">Head of Product Design</p>
+                            <p class="bio">Marcus ensures every curve and stitch meets our uncompromising standards.</p>
+                            <div class="team-social">
+                                <a href="./error.html"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="./error.html"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-card fade-in">
+                        <img src="../assets/About/Team/2.webp" alt="Creative Director">
+                        <div class="team-info">
+                            <h3>Elena Rossi</h3>
+                            <p class="role">Creative Director</p>
+                            <p class="bio">Curating global aesthetics to bring international flair to your living
+                                spaces.</p>
+                            <div class="team-social">
+                                <a href="./error.html"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="./error.html"><i class="fa-brands fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Mission & Vision (GSAP) -->
+        <section class="mission-vision">
+            <div class="container gs-split-container">
+                <div class="gs-left gs-reveal-left">
+                    <div class="mv-block">
+                        <div class="mv-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        <h2>Our Mission</h2>
+                        <p>To redefine the standard of accessible luxury by creating timeless furniture pieces that
+                            empower individuals to express their unique style without compromising on comfort or ethical
+                            manufacturing.</p>
+                        <a href="error.html" class="btn btn-outline-teal gs-btn-hover" style="margin-top: 20px;">Learn
+                            More</a>
+                    </div>
+                </div>
+
+                <div class="gs-center-divider"></div>
+
+                <div class="gs-right gs-reveal-right">
+                    <div class="mv-block">
+                        <div class="mv-icon"><i class="fa-solid fa-eye"></i></div>
+                        <h2>Our Vision</h2>
+                        <p>To become the world's most trusted name in home aesthetics, leading the industry toward
+                            sustainable practices, innovative materials, and designs that elevate the human experience
+                            in every room.</p>
+                        <a href="error.html" class="btn btn-primary gs-btn-hover" style="margin-top: 20px;">Learn
+                            More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Company History (Fixed parallax) -->
+        <section class="history-section">
+            <div class="history-bg"></div>
+            <div class="history-overlay"></div>
+            <div class="container history-content">
+                <div class="section-heading text-center">
+                    <span class="subheading">Our Journey</span>
+                    <h2>A Legacy of Design</h2>
+                </div>
+
+                <div class="timeline-wrapper">
+                    <div class="timeline-item reveal-up">
+                        <div class="year">2010</div>
+                        <div class="timeline-details">
+                            <h3>Humble Beginnings</h3>
+                            <p>Founded in a small workshop focusing on custom wood joinery and bespoke dining tables.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal-up">
+                        <div class="year">2015</div>
+                        <div class="timeline-details">
+                            <h3>Expanding Horizons</h3>
+                            <p>Launched our first complete living room collection and opened our flagship showroom.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal-up">
+                        <div class="year">2020</div>
+                        <div class="timeline-details">
+                            <h3>Sustainable Shift</h3>
+                            <p>Pioneered our eco-friendly manufacturing process, sourcing 100% renewable materials.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal-up">
+                        <div class="year">Today</div>
+                        <div class="timeline-details">
+                            <h3>Global Reach</h3>
+                            <p>Delivering premium luxury to over 30 countries globally, redefining international homes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Testimonials (Carousel) -->
+        <section class="testimonials-section section-padding">
+            <div class="container" style="overflow: hidden;">
+                <div class="section-heading text-center">
+                    <span class="subheading">Client Stories</span>
+                    <h2>Voices of Elegance</h2>
+                </div>
+
+                <!-- GSAP Carousel Wrapper -->
+                <div class="test-carousel-wrapper">
+                    <div class="test-carousel-track" id="test-track">
+                        <div class="test-card-new">
+                            <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                            <p class="test-text">"FurniStyle completely transformed our apartment. The attention to
+                                detail in their custom upholstery is unmatched. Truly a premium experience from start to
+                                finish."</p>
+                            <h4 class="test-author-name">Jonathan M. - Interior Enthusiast</h4>
+                        </div>
+
+                        <div class="test-card-new">
+                            <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                            <p class="test-text">"Working with their design team was a breeze. They understood my vision
+                                perfectly and delivered pieces that act as true statements in my home."</p>
+                            <h4 class="test-author-name">Samantha W. - Homeowner</h4>
+                        </div>
+
+                        <div class="test-card-new">
+                            <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                            <p class="test-text">"The durability and style of the oak dining set we purchased are
+                                incredible. It has survived three kids and still looks like a museum piece."</p>
+                            <h4 class="test-author-name">David & Chloe - Loyal Customers</h4>
+                        </div>
+
+                        <div class="test-card-new">
+                            <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                            <p class="test-text">"I couldn't be happier with the lighting fixtures. The brass finishes
+                                are stunning, and the quality is absolutely top tier."</p>
+                            <h4 class="test-author-name">Marcus R. - Architect</h4>
+                        </div>
+
+                        <div class="test-card-new">
+                            <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                            <p class="test-text">"From the white-glove delivery to the perfection in the stitching of
+                                the fabrics, FurniStyle provides unmatched value for luxury."</p>
+                            <h4 class="test-author-name">Isabella G. - Lifestyle Blogger</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footerWrap container">
+            <div class="box">
+                <div class="logoContainer">
+                    <div class="logo">
+                        <img src="../assets/Header/logo.webp" alt="FurniStyle Logo" class="footer-logo site-logo"
+                            onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'">
+                    </div>
+                </div>
+                <p class="footer-desc">
+                    FurniStyle is a global leader in accessible luxury furniture, dedicated to improving home aesthetics
+                    and comfort through meticulously crafted pieces and reliable support. We transform houses into
+                    elegant homes.
+                </p>
+            </div>
+
+            <div class="box">
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="dashboard.html">DashBoard</a></li>
+                    <li><a href="product.html">Product</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h4>Categories</h4>
+                <ul class="footer-links">
+                    <li><a href="error.html">Living Room Sets</a></li>
+                    <li><a href="error.html">Bedroom Collections</a></li>
+                    <li><a href="error.html">Dining Sets</a></li>
+                    <li><a href="error.html">Office Furniture</a></li>
+                    <li><a href="error.html">Outdoor & Patio</a></li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h4>Contact</h4>
+                <ul class="contactInfo">
+                    <li><i class="fa-solid fa-location-dot"></i><span> Stackly Headquarters, Los Angeles, CA</span></li>
+                    <li><i class="fa-solid fa-phone"></i> +1 888 123 4567</li>
+                    <li><i class="fa-solid fa-envelope"></i> design@stackly.auto</li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h4>Newsletter</h4>
+                <p>Subscribe for interior design tips & upcoming sales.</p>
+                <form id="footer-newsletter-form" class="subscribe-form" novalidate>
+                    <input type="email" id="newsletter-email" name="email" placeholder="Your Email"
+                        autocomplete="email">
+                    <span id="newsletter-error"
+                        style="color: var(--error-color); font-size: 0.8rem; display: block; margin-top: -5px; min-height: 15px;"></span>
+                    <button type="submit" class="btn btn-primary full-width">Subscribe</button>
+                </form>
+                <div class="media">
+                    <a href="error.html" class="socialLink" aria-label="Pinterest"><i
+                            class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="error.html" class="socialLink" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="error.html" class="socialLink" aria-label="Facebook"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="error.html" class="socialLink" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom container">
+            <p>&copy; 2026 FurniStyle Premium Furniture. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- GSAP Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+
+    <!-- Javascript Logic -->
+    <script>
+        // --- Shared Header & Loader Logic ---
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('page-loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.display = 'none'; }, 300);
+            }
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#' && !href.startsWith('javascript') && !this.classList.contains('cart-nav-icon')) {
+                    e.preventDefault();
+                    const loader = document.getElementById('page-loader');
+                    if (loader) {
+                        loader.style.display = 'flex';
+                        setTimeout(() => { loader.style.opacity = '1'; }, 10);
+                        setTimeout(() => { window.location.href = href; }, 400);
+                    } else {
+                        window.location.href = href;
+                    }
+                }
+            });
+        });
+
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const navLinks = document.getElementById('nav-links');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const dropdownToggleBtn = document.getElementById('dropdown-toggle-btn');
+        const homeNavLink = document.getElementById('home-nav-link');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const body = document.body;
+
+        function openMenu() {
+            navLinks.classList.add('showMenu');
+            if (menuOverlay) menuOverlay.style.display = 'block';
+            body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove('showMenu');
+            if (menuOverlay) menuOverlay.style.display = 'none';
+            body.classList.remove('menu-open');
+            if (dropdownMenu) dropdownMenu.classList.remove('showDropdown');
+        }
+
+        if (hamburgerBtn) hamburgerBtn.addEventListener('click', (e) => { e.stopPropagation(); openMenu(); });
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+        document.addEventListener('click', (e) => {
+            if (body.classList.contains('menu-open') && navLinks) {
+                if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                    closeMenu();
+                }
+            }
+        });
+
+        if (dropdownToggleBtn) {
+            dropdownToggleBtn.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                if (dropdownMenu) dropdownMenu.classList.toggle('showDropdown');
+            });
+        }
+
+        if (homeNavLink) {
+            homeNavLink.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault(); e.stopPropagation();
+                    if (dropdownMenu) dropdownMenu.classList.toggle('showDropdown');
+                }
+            });
+        }
+
+        const themeToggleBtn = document.getElementById('theme-toggle-btn');
+        const themeIcon = document.getElementById('theme-icon');
+
+        if (themeIcon && document.body.classList.contains('light-theme')) {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else if (themeIcon) {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                if (document.body.classList.contains('light-theme')) {
+                    if (themeIcon) themeIcon.classList.remove('fa-sun');
+                    if (themeIcon) themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('furniture-theme', 'light');
+                } else {
+                    if (themeIcon) themeIcon.classList.remove('fa-moon');
+                    if (themeIcon) themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('furniture-theme', 'dark');
+                }
+            });
+        }
+
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (header) {
+                if (window.scrollY > 50) header.classList.add('sticky');
+                else header.classList.remove('sticky');
+            }
+        });
+
+        const footerForm = document.getElementById('footer-newsletter-form');
+        const newsletterEmail = document.getElementById('newsletter-email');
+        const newsletterError = document.getElementById('newsletter-error');
+
+        const isValidEmail = (email) => {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        };
+
+        if (footerForm) {
+            footerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                newsletterError.innerText = '';
+                newsletterEmail.style.borderColor = '';
+
+                if (newsletterEmail.value.trim() === '') {
+                    newsletterError.innerText = 'Email is required';
+                    newsletterEmail.style.borderColor = 'var(--error-color)';
+                } else if (!isValidEmail(newsletterEmail.value.trim())) {
+                    newsletterError.innerText = 'Please enter a valid email address';
+                    newsletterEmail.style.borderColor = 'var(--error-color)';
+                } else {
+                    const loader = document.getElementById('page-loader');
+                    if (loader) {
+                        loader.style.display = 'flex';
+                        setTimeout(() => { loader.style.opacity = '1'; }, 10);
+                        setTimeout(() => { window.location.href = 'error.html'; }, 400);
+                    } else {
+                        window.location.href = 'error.html';
+                    }
+                }
+            });
+        }
+
+        // --- About Page Specific Logic ---  
+        // 1. Hero Image Carousel Crossfade
+        const slides = document.querySelectorAll('.about-slide');
+        let currentSlide = 0;
+
+        setInterval(() => {
+            slides[currentSlide].classList.remove('slide-active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('slide-active');
+        }, 5000); // 5s crossfade
+
+        // 2. Fade In Observer
+        const fadeElems = document.querySelectorAll('.fade-in, .reveal-up');
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeElems.forEach(elem => fadeInObserver.observe(elem));
+
+        // 3. GSAP Animations Integration
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+            // Typing Effect implementation (GSAP TextPlugin)
+            const h1Text = "Crafting Timeless Elegance";
+            const pText = "We believe that furniture is more than just functionality; it's the soul of your home. Since our inception, we have been dedicated to blending masterful craftsmanship with modern aesthetics.";
+
+            gsap.to("#hero-typing-h1", {
+                duration: 2.5,
+                text: h1Text,
+                ease: "none",
+                delay: 0.5
+            });
+
+            gsap.to("#hero-typing-p", {
+                duration: 5,
+                text: pText,
+                ease: "none",
+                delay: 3 // Wait for H1 to finish
+            });
+
+            // GSAP Button Hover Logic for Mission/Vision
+            const gsBtns = document.querySelectorAll('.gs-btn-hover');
+            gsBtns.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    gsap.to(btn, { scale: 1.05, y: -3, duration: 0.3, ease: 'power2.out', boxShadow: '0 10px 20px rgba(0,0,0,0.2)' });
+                });
+                btn.addEventListener('mouseleave', () => {
+                    gsap.to(btn, { scale: 1, y: 0, duration: 0.3, ease: 'power2.in', boxShadow: '0 0px 0px rgba(0,0,0,0)' });
+                });
+            });
+
+            // Mission & Vision Split Reveal
+            const tlSplit = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".mission-vision",
+                    start: "top 70%",
+                    end: "bottom 80%",
+                    toggleActions: "play none none reverse",
+                }
+            });
+
+            tlSplit.fromTo(".gs-reveal-left",
+                { x: -100, opacity: 0 },
+                { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
+            )
+                .fromTo(".gs-center-divider",
+                    { scaleY: 0, transformOrigin: "top" },
+                    { scaleY: 1, duration: 0.8, ease: "power2.out" },
+                    "-=0.5"
+                )
+                .fromTo(".gs-reveal-right",
+                    { x: 100, opacity: 0 },
+                    { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
+                    "-=0.8"
+                );
+
+            // History Timeline Stagger
+            gsap.from(".timeline-item", {
+                scrollTrigger: {
+                    trigger: ".history-section",
+                    start: "top 60%"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: "back.out(1.7)"
+            });
+
+            // Testimonials Infinite Seamless Horizontal Marquee
+            const track = document.getElementById("test-track");
+            if (track) {
+                // Clone the cards for a seamless loop
+                const originalCards = track.innerHTML;
+                track.innerHTML += originalCards;
+
+                // Animate moving left
+                gsap.to(track, {
+                    xPercent: -50,
+                    ease: "none",
+                    duration: 30,
+                    repeat: -1,
+                });
+            }
+        });
+
+    </script>
+</body>
+
+</html>

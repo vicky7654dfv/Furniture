@@ -1,0 +1,1244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FurniStyle | Secure Checkout</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%230d9488' d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z'/></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/checkout.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <script>
+      if (localStorage.getItem("furniture-theme") !== "dark") {
+        document.body.classList.add("light-theme");
+        localStorage.setItem("furniture-theme", "light");
+      }
+    </script>
+
+    <div id="page-loader">
+      <div class="loader-content">
+        <img
+          src="../assets/Header/logo.webp"
+          alt="FurniStyle Logo"
+          class="loader-img"
+          onerror="
+            this.src =
+              'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'
+          "
+        />
+        <p>Processing Request...</p>
+      </div>
+    </div>
+
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <header class="headerWrap" id="main-header">
+      <div class="imgWrap">
+        <a href="../index.html">
+          <img
+            src="../assets/Header/logo.webp"
+            alt="FurniStyle Logo"
+            class="site-logo"
+            onerror="
+              this.src =
+                'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'
+            "
+          />
+        </a>
+      </div>
+      <div class="hamburger" id="hamburger-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <nav class="linksWrap" id="nav-links">
+        <div class="topCloseBtn" id="close-btn">
+          <i class="fa-solid fa-times"></i>
+        </div>
+        <ul>
+          <li class="dropdown" id="home-dropdown">
+            <div class="dropdownHeader">
+              <a
+                href="javascript:void(0)"
+                class="homePageLink"
+                id="home-nav-link"
+                >Home</a
+              >
+              <button
+                class="dropdownToggle"
+                aria-label="Toggle dropdown"
+                id="dropdown-toggle-btn"
+              >
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+            <ul class="dropdownMenu" id="dropdown-menu">
+              <li><a href="../index.html">Home 1</a></li>
+              <li><a href="./home2.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="./dashboard.html">DashBoard</a></li>
+          <li><a href="./product.html">Product</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li><a href="./signup.html">Sign Up</a></li>
+          <li><a href="./login.html">Login</a></li>
+          <li>
+            <a
+              href="./checkout.html"
+              aria-label="Checkout"
+              class="cart-nav-icon checkout-text"
+            >
+              Checkout<sup id="cart-item-count">3</sup>
+            </a>
+          </li>
+          <li class="theme-toggle-li">
+            <button id="theme-toggle-btn" aria-label="Toggle Theme">
+              <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <div class="menuOverlay" id="menu-overlay"></div>
+    </header>
+
+    <main class="checkout-main">
+      <div class="checkout-hero">
+        <div class="checkout-hero-inner">
+          <nav class="co-hero-breadcrumb" aria-label="breadcrumb">
+            <a href="../index.html">Home</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <a href="./product.html">Products</a>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>Checkout</span>
+          </nav>
+          <h1 class="co-hero-title">Secure Checkout</h1>
+          <p class="co-hero-sub">
+            Complete your order safely — your payment details are always
+            encrypted and protected.
+          </p>
+          <div class="co-hero-steps">
+            <div class="co-step co-step-done">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span>Cart</span>
+            </div>
+            <div class="co-step-line"></div>
+            <div class="co-step co-step-active">
+              <i class="fa-solid fa-address-card"></i>
+              <span>Details</span>
+            </div>
+            <div class="co-step-line"></div>
+            <div class="co-step">
+              <i class="fa-solid fa-credit-card"></i>
+              <span>Payment</span>
+            </div>
+            <div class="co-step-line"></div>
+            <div class="co-step">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Confirm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-split-layout">
+        <div class="checkout-summary-panel">
+          <div class="summary-inner">
+            <nav class="checkout-breadcrumb" aria-label="breadcrumb">
+              <a href="../index.html">Home</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <a href="./product.html">Products</a>
+              <i class="fa-solid fa-chevron-right"></i>
+              <span>Checkout</span>
+            </nav>
+
+            <h1 class="summary-title">Your Cart</h1>
+            <p class="summary-subtitle">
+              <span id="cart-count-display">3</span> items
+            </p>
+
+            <div class="summary-items" id="cart-items-container">
+              <div class="summary-product" data-id="1" data-price="1299">
+                <div class="sp-img">
+                  <img
+                    src="../assets/Product/1.webp"
+                    alt="Emerald Velvet Sofa"
+                    onerror="
+                      this.src =
+                        'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 64 64\'><rect fill=\'%230d9488\' width=\'64\' height=\'64\' rx=\'8\'/></svg>'
+                    "
+                  />
+                </div>
+                <div class="sp-details">
+                  <h3 class="sp-name">Emerald Velvet Sofa</h3>
+                  <p class="sp-variant">Deep green velvet / Brass accents</p>
+                  <div class="sp-qty-control">
+                    <button
+                      class="qty-btn qty-minus"
+                      aria-label="Decrease quantity"
+                    >
+                      &#8722;
+                    </button>
+                    <span class="qty-value">1</span>
+                    <button
+                      class="qty-btn qty-plus"
+                      aria-label="Increase quantity"
+                    >
+                      &#43;
+                    </button>
+                    <button class="sp-delete" aria-label="Remove item">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="sp-price-wrap">
+                  <span class="sp-price">$1,299.00</span>
+                </div>
+              </div>
+
+              <div class="summary-product" data-id="2" data-price="499">
+                <div class="sp-img">
+                  <img
+                    src="../assets/Product/2.webp"
+                    alt="Modern Lounge Chair"
+                    onerror="
+                      this.src =
+                        'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 64 64\'><rect fill=\'%230d9488\' width=\'64\' height=\'64\' rx=\'8\'/></svg>'
+                    "
+                  />
+                </div>
+                <div class="sp-details">
+                  <h3 class="sp-name">Modern Lounge Chair</h3>
+                  <p class="sp-variant">Ergonomic design / Natural oak</p>
+                  <div class="sp-qty-control">
+                    <button
+                      class="qty-btn qty-minus"
+                      aria-label="Decrease quantity"
+                    >
+                      &#8722;
+                    </button>
+                    <span class="qty-value">1</span>
+                    <button
+                      class="qty-btn qty-plus"
+                      aria-label="Increase quantity"
+                    >
+                      &#43;
+                    </button>
+                    <button class="sp-delete" aria-label="Remove item">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="sp-price-wrap">
+                  <span class="sp-price">$499.00</span>
+                </div>
+              </div>
+
+              <div class="summary-product" data-id="3" data-price="2150">
+                <div class="sp-img">
+                  <img
+                    src="../assets/Product/3.webp"
+                    alt="Oak Dining Set"
+                    onerror="
+                      this.src =
+                        'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 64 64\'><rect fill=\'%230d9488\' width=\'64\' height=\'64\' rx=\'8\'/></svg>'
+                    "
+                  />
+                </div>
+                <div class="sp-details">
+                  <h3 class="sp-name">Oak Dining Set</h3>
+                  <p class="sp-variant">Solid oak / Seating for six</p>
+                  <div class="sp-qty-control">
+                    <button
+                      class="qty-btn qty-minus"
+                      aria-label="Decrease quantity"
+                    >
+                      &#8722;
+                    </button>
+                    <span class="qty-value">1</span>
+                    <button
+                      class="qty-btn qty-plus"
+                      aria-label="Increase quantity"
+                    >
+                      &#43;
+                    </button>
+                    <button class="sp-delete" aria-label="Remove item">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="sp-price-wrap">
+                  <span class="sp-price">$2,150.00</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="empty-cart-msg"
+              id="empty-cart-msg"
+              style="display: none"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <p>
+                Your cart is empty. <a href="./product.html">Browse products</a>
+              </p>
+            </div>
+
+            <div class="summary-totals" id="summary-totals">
+              <div class="st-row">
+                <span class="st-label">Subtotal</span>
+                <span class="st-value" id="cart-subtotal">$3,948.00</span>
+              </div>
+              <div class="st-row st-grand">
+                <span class="st-label">Total</span>
+                <span class="st-value grand-val" id="cart-total"
+                  ><span class="st-currency">USD</span> $3,948.00</span
+                >
+              </div>
+            </div>
+
+            <div class="trust-badges">
+              <div class="trust-badge">
+                <i class="fa-solid fa-lock"></i><span>Secure Checkout</span>
+              </div>
+              <div class="trust-badge">
+                <i class="fa-solid fa-shield-halved"></i
+                ><span>Buyer Protection</span>
+              </div>
+              <div class="trust-badge">
+                <i class="fa-solid fa-rotate-left"></i><span>Easy Returns</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="checkout-form-panel">
+          <div class="form-inner">
+            <div class="payment-steps">
+              <div class="p-step active">
+                <span class="ps-num">1</span
+                ><span class="ps-label">Information</span>
+              </div>
+              <i class="fa-solid fa-chevron-right p-step-sep"></i>
+              <div class="p-step">
+                <span class="ps-num">2</span
+                ><span class="ps-label">Shipping</span>
+              </div>
+              <i class="fa-solid fa-chevron-right p-step-sep"></i>
+              <div class="p-step">
+                <span class="ps-num">3</span
+                ><span class="ps-label">Payment</span>
+              </div>
+            </div>
+
+            <form id="checkout-form" novalidate autocomplete="on">
+              <div class="form-section">
+                <h2 class="fs-title">Contact Information</h2>
+                <div class="fs-group">
+                  <label class="fs-label" for="co-email"
+                    >Email Address <span class="req-star">*</span></label
+                  >
+                  <input
+                    type="email"
+                    id="co-email"
+                    name="email"
+                    class="fs-input"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                  <span class="field-error" id="err-email"></span>
+                </div>
+                <label class="fs-checkbox">
+                  <input
+                    type="checkbox"
+                    id="co-newsletter"
+                    name="newsletter"
+                    checked
+                  />
+                  <span>Email me with news and offers</span>
+                </label>
+              </div>
+
+              <div class="form-section">
+                <h2 class="fs-title">Shipping Address</h2>
+
+                <div class="fs-row">
+                  <div class="fs-group">
+                    <label class="fs-label" for="co-fname"
+                      >First Name <span class="req-star">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="co-fname"
+                      name="fname"
+                      class="fs-input"
+                      placeholder="John"
+                      autocomplete="given-name"
+                      pattern="[A-Za-z\s]+"
+                      required
+                    />
+                    <span class="field-error" id="err-fname"></span>
+                  </div>
+                  <div class="fs-group">
+                    <label class="fs-label" for="co-lname"
+                      >Last Name <span class="req-star">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="co-lname"
+                      name="lname"
+                      class="fs-input"
+                      placeholder="Smith"
+                      autocomplete="family-name"
+                      pattern="[A-Za-z\s]+"
+                      required
+                    />
+                    <span class="field-error" id="err-lname"></span>
+                  </div>
+                </div>
+
+                <div class="fs-group">
+                  <label class="fs-label" for="co-address"
+                    >Street Address <span class="req-star">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="co-address"
+                    name="address"
+                    class="fs-input"
+                    placeholder="123 Main Street"
+                    autocomplete="street-address"
+                    required
+                  />
+                  <span class="field-error" id="err-address"></span>
+                </div>
+
+                <div class="fs-group">
+                  <label class="fs-label" for="co-apt">Apartment / Suite</label>
+                  <input
+                    type="text"
+                    id="co-apt"
+                    name="apt"
+                    class="fs-input"
+                    placeholder="Apt 4B (optional)"
+                    autocomplete="address-line2"
+                  />
+                </div>
+
+                <div class="fs-row">
+                  <div class="fs-group">
+                    <label class="fs-label" for="co-city"
+                      >City <span class="req-star">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="co-city"
+                      name="city"
+                      class="fs-input"
+                      placeholder="New York"
+                      autocomplete="address-level2"
+                      required
+                    />
+                    <span class="field-error" id="err-city"></span>
+                  </div>
+                  <div class="fs-group">
+                    <label class="fs-label" for="co-state"
+                      >State / Province <span class="req-star">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="co-state"
+                      name="state"
+                      class="fs-input"
+                      placeholder="California"
+                      autocomplete="address-level1"
+                      pattern="[A-Za-z\s]+"
+                      required
+                    />
+                    <span class="field-error" id="err-state"></span>
+                  </div>
+                </div>
+
+                <div class="fs-row">
+                  <div class="fs-group">
+                    <label class="fs-label" for="co-zip"
+                      >ZIP Code <span class="req-star">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="co-zip"
+                      name="zip"
+                      class="fs-input"
+                      placeholder="100001"
+                      autocomplete="postal-code"
+                      inputmode="numeric"
+                      maxlength="6"
+                      required
+                    />
+                    <span class="field-error" id="err-zip"></span>
+                  </div>
+                  <div class="fs-group">
+                    <label class="fs-label" for="co-phone"
+                      >Phone Number <span class="req-star">*</span></label
+                    >
+                    <input
+                      type="tel"
+                      id="co-phone"
+                      name="phone"
+                      class="fs-input"
+                      placeholder="1234567890"
+                      autocomplete="tel"
+                      inputmode="numeric"
+                      maxlength="10"
+                      required
+                    />
+                    <span class="field-error" id="err-phone"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <h2 class="fs-title">
+                  Payment
+                  <span class="fs-subtitle"
+                    ><i class="fa-solid fa-lock"></i> Secure &amp;
+                    encrypted</span
+                  >
+                </h2>
+
+                <div class="payment-tabs-container">
+                  <div class="unified-tabs" role="tablist">
+                    <button
+                      type="button"
+                      class="u-tab active"
+                      data-target="panel-card"
+                      role="tab"
+                    >
+                      <i class="fa-solid fa-credit-card"></i> Credit / Debit
+                      Card
+                    </button>
+                    <button
+                      type="button"
+                      class="u-tab"
+                      data-target="panel-upi"
+                      role="tab"
+                    >
+                      <i class="fa-brands fa-google-pay"></i> UPI
+                    </button>
+                  </div>
+
+                  <div class="unified-panels">
+                    <div class="u-panel active" id="panel-card" role="tabpanel">
+                      <div class="fs-group">
+                        <label class="fs-label" for="card-number"
+                          >Card Number <span class="req-star">*</span></label
+                        >
+                        <div class="input-icon-right">
+                          <input
+                            type="text"
+                            id="card-number"
+                            name="card-number"
+                            class="fs-input"
+                            placeholder="1234 5678 9012 3456"
+                            maxlength="19"
+                            inputmode="numeric"
+                            autocomplete="cc-number"
+                          />
+                          <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <span class="field-error" id="err-card-number"></span>
+                      </div>
+                      <div class="fs-row">
+                        <div class="fs-group">
+                          <label class="fs-label" for="card-expiry"
+                            >Expiry Date <span class="req-star">*</span></label
+                          >
+                          <input
+                            type="text"
+                            id="card-expiry"
+                            name="card-expiry"
+                            class="fs-input"
+                            placeholder="MM / YY"
+                            maxlength="7"
+                            inputmode="numeric"
+                            autocomplete="cc-exp"
+                          />
+                          <span class="field-error" id="err-card-expiry"></span>
+                        </div>
+                        <div class="fs-group">
+                          <label class="fs-label" for="card-cvv"
+                            >Security Code
+                            <span class="req-star">*</span></label
+                          >
+                          <div class="input-icon-right">
+                            <input
+                              type="password"
+                              id="card-cvv"
+                              name="card-cvv"
+                              class="fs-input"
+                              placeholder="CVV"
+                              maxlength="4"
+                              inputmode="numeric"
+                              autocomplete="cc-csc"
+                            />
+                            <i class="fa-regular fa-circle-question"></i>
+                          </div>
+                          <span class="field-error" id="err-card-cvv"></span>
+                        </div>
+                      </div>
+                      <div class="fs-group">
+                        <label class="fs-label" for="card-name"
+                          >Name on Card <span class="req-star">*</span></label
+                        >
+                        <input
+                          type="text"
+                          id="card-name"
+                          name="card-name"
+                          class="fs-input"
+                          placeholder="John Smith"
+                          autocomplete="cc-name"
+                          pattern="[A-Za-z\s]+"
+                        />
+                        <span class="field-error" id="err-card-name"></span>
+                      </div>
+                    </div>
+
+                    <div class="u-panel" id="panel-upi" role="tabpanel">
+                      <div class="upi-logos">
+                        <i class="fa-brands fa-google-pay"></i>
+                        <i class="fa-brands fa-amazon-pay"></i>
+                        <span class="upi-label">UPI</span>
+                      </div>
+                      <div class="fs-group">
+                        <label class="fs-label" for="upi-id"
+                          >UPI ID <span class="req-star">*</span></label
+                        >
+                        <input
+                          type="text"
+                          id="upi-id"
+                          name="upi-id"
+                          class="fs-input"
+                          placeholder="yourname@bank"
+                        />
+                        <span class="field-error" id="err-upi-id"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="checkout-actions">
+                <a href="./product.html" class="return-link">
+                  <i class="fa-solid fa-chevron-left"></i> Return to cart
+                </a>
+                <button type="submit" class="btn-pay-now" id="pay-now-btn">
+                  <i class="fa-solid fa-shield-halved"></i> Pay now
+                </button>
+              </div>
+            </form>
+
+            <div class="checkout-footer-simple">
+              <p>&copy; 2026 FurniStyle. All rights reserved.</p>
+              <div class="cfs-links">
+                <a href="./error.html">Refund policy</a>
+                <a href="./error.html">Privacy policy</a>
+                <a href="./error.html">Terms of service</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-closer">
+        <div class="checkout-closer-inner">
+          <div class="closer-pillar">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3>100% Secure</h3>
+            <p>
+              Your payment and personal data are fully encrypted and protected
+              at every step.
+            </p>
+          </div>
+          <div class="closer-pillar">
+            <i class="fa-solid fa-truck-fast"></i>
+            <h3>Fast Delivery</h3>
+            <p>White-glove delivery straight to your door, on your schedule.</p>
+          </div>
+          <div class="closer-pillar">
+            <i class="fa-solid fa-rotate-left"></i>
+            <h3>Easy Returns</h3>
+            <p>
+              Not satisfied? Return within 30 days for a full hassle-free
+              refund.
+            </p>
+          </div>
+          <div class="closer-pillar">
+            <i class="fa-solid fa-headset"></i>
+            <h3>24/7 Support</h3>
+            <p>
+              Our team is always here to help before, during, and after your
+              purchase.
+            </p>
+          </div>
+        </div>
+        <p class="closer-tagline">
+          Thank you for choosing <strong>FurniStyle</strong> — where every piece
+          tells a story of craftsmanship and elegance.
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footerWrap container">
+        <div class="box">
+          <div class="logoContainer">
+            <div class="logo">
+              <img
+                src="../assets/Header/logo.webp"
+                alt="FurniStyle Logo"
+                class="footer-logo site-logo"
+                onerror="
+                  this.src =
+                    'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 50\'><text y=\'35\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'30\' fill=\'%230d9488\'>FurniStyle</text></svg>'
+                "
+              />
+            </div>
+          </div>
+          <p class="footer-desc">
+            FurniStyle is a global leader in accessible luxury furniture,
+            dedicated to improving home aesthetics and comfort through
+            meticulously crafted pieces and reliable support. We transform
+            houses into elegant homes.
+          </p>
+        </div>
+        <div class="box">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="./about.html">About Us</a></li>
+            <li><a href="./dashboard.html">DashBoard</a></li>
+            <li><a href="./product.html">Product</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="./error.html">Living Room Sets</a></li>
+            <li><a href="./error.html">Bedroom Collections</a></li>
+            <li><a href="./error.html">Dining Sets</a></li>
+            <li><a href="./error.html">Office Furniture</a></li>
+            <li><a href="./error.html">Outdoor &amp; Patio</a></li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Contact</h4>
+          <ul class="contactInfo">
+            <li>
+              <i class="fa-solid fa-location-dot"></i
+              ><span> Stackly Headquarters, Los Angeles, CA</span>
+            </li>
+            <li><i class="fa-solid fa-phone"></i> +1 888 123 4567</li>
+            <li><i class="fa-solid fa-envelope"></i> design@stackly.auto</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Newsletter</h4>
+          <p>Subscribe for interior design tips &amp; upcoming sales.</p>
+          <form id="footer-newsletter-form" class="subscribe-form" novalidate>
+            <input
+              type="email"
+              id="newsletter-email"
+              name="email"
+              placeholder="Your Email"
+              autocomplete="email"
+            />
+            <span
+              id="newsletter-error"
+              style="
+                color: var(--error-color);
+                font-size: 0.8rem;
+                display: block;
+                margin-top: -5px;
+                min-height: 15px;
+              "
+            ></span>
+            <button type="submit" class="btn btn-primary full-width">
+              Subscribe
+            </button>
+          </form>
+          <div class="media">
+            <a href="./error.html" class="socialLink" aria-label="Pinterest"
+              ><i class="fa-brands fa-pinterest-p"></i
+            ></a>
+            <a href="./error.html" class="socialLink" aria-label="Instagram"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="./error.html" class="socialLink" aria-label="Facebook"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="./error.html" class="socialLink" aria-label="Website"
+              ><i class="fa-solid fa-globe"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom container">
+        <p>&copy; 2026 FurniStyle Premium Furniture. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // ─── Page Loader ───
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("page-loader");
+        loader.style.opacity = "0";
+        setTimeout(() => {
+          loader.style.display = "none";
+        }, 300);
+      });
+
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (
+            href &&
+            href !== "#" &&
+            !href.startsWith("javascript") &&
+            !this.classList.contains("cart-nav-icon")
+          ) {
+            e.preventDefault();
+            const loader = document.getElementById("page-loader");
+            loader.style.display = "flex";
+            setTimeout(() => {
+              loader.style.opacity = "1";
+            }, 10);
+            setTimeout(() => {
+              window.location.href = href;
+            }, 400);
+          }
+        });
+      });
+
+      // ─── Hamburger Menu ───
+      const hamburgerBtn = document.getElementById("hamburger-btn");
+      const closeBtn = document.getElementById("close-btn");
+      const navLinks = document.getElementById("nav-links");
+      const menuOverlay = document.getElementById("menu-overlay");
+      const dropdownToggleBtn = document.getElementById("dropdown-toggle-btn");
+      const homeNavLink = document.getElementById("home-nav-link");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+      const body = document.body;
+
+      function openMenu() {
+        navLinks.classList.add("showMenu");
+        menuOverlay.style.display = "block";
+        body.classList.add("menu-open");
+      }
+      function closeMenu() {
+        navLinks.classList.remove("showMenu");
+        menuOverlay.style.display = "none";
+        body.classList.remove("menu-open");
+        dropdownMenu.classList.remove("showDropdown");
+      }
+      hamburgerBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openMenu();
+      });
+      closeBtn.addEventListener("click", closeMenu);
+      menuOverlay.addEventListener("click", closeMenu);
+      document.addEventListener("click", (e) => {
+        if (
+          body.classList.contains("menu-open") &&
+          !navLinks.contains(e.target) &&
+          !hamburgerBtn.contains(e.target)
+        )
+          closeMenu();
+      });
+      dropdownToggleBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdownMenu.classList.toggle("showDropdown");
+      });
+      homeNavLink.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdownMenu.classList.toggle("showDropdown");
+        }
+      });
+
+      // ─── Theme Toggle ───
+      const themeToggleBtn = document.getElementById("theme-toggle-btn");
+      const themeIcon = document.getElementById("theme-icon");
+
+      function updateThemeIcon() {
+        if (document.body.classList.contains("light-theme")) {
+          themeIcon.classList.remove("fa-sun");
+          themeIcon.classList.add("fa-moon");
+        } else {
+          themeIcon.classList.remove("fa-moon");
+          themeIcon.classList.add("fa-sun");
+        }
+      }
+      updateThemeIcon();
+      themeToggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("light-theme");
+        localStorage.setItem(
+          "furniture-theme",
+          document.body.classList.contains("light-theme") ? "light" : "dark",
+        );
+        updateThemeIcon();
+      });
+
+      // ─── Sticky Header & Scroll To Top ───
+      const header = document.getElementById("main-header");
+      const scrollBtn = document.getElementById("scrollToTopBtn");
+      window.addEventListener("scroll", () => {
+        header.classList.toggle("sticky", window.scrollY > 50);
+        scrollBtn.classList.toggle("visible", window.scrollY > 500);
+      });
+      scrollBtn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
+
+      // ─── Cart Logic (Quantity + Delete + Total) ───
+      function formatPrice(n) {
+        return "$" + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
+      function recalcCart() {
+        const rows = document.querySelectorAll(".summary-product");
+        let subtotal = 0;
+        let count = 0;
+
+        rows.forEach((row) => {
+          const price = parseFloat(row.dataset.price);
+          const qty = parseInt(row.querySelector(".qty-value").textContent);
+          const lineTotal = price * qty;
+          subtotal += lineTotal;
+          count += qty;
+          row.querySelector(".sp-price").textContent = formatPrice(lineTotal);
+        });
+
+        // Update header badge
+        document.getElementById("cart-item-count").textContent = rows.length;
+        document.getElementById("cart-count-display").textContent =
+          rows.length + " item" + (rows.length !== 1 ? "s" : "");
+
+        // Update totals
+        document.getElementById("cart-subtotal").textContent =
+          formatPrice(subtotal);
+        document.getElementById("cart-total").innerHTML =
+          '<span class="st-currency">USD</span> ' + formatPrice(subtotal);
+
+        // Show empty state if no items
+        const emptyMsg = document.getElementById("empty-cart-msg");
+        const totals = document.getElementById("summary-totals");
+        if (rows.length === 0) {
+          emptyMsg.style.display = "flex";
+          totals.style.display = "none";
+          document.getElementById("pay-now-btn").disabled = true;
+        } else {
+          emptyMsg.style.display = "none";
+          totals.style.display = "flex";
+          document.getElementById("pay-now-btn").disabled = false;
+        }
+      }
+
+      // Delegate qty & delete events on container
+      document
+        .getElementById("cart-items-container")
+        .addEventListener("click", function (e) {
+          const row = e.target.closest(".summary-product");
+          if (!row) return;
+
+          const qtyEl = row.querySelector(".qty-value");
+          let qty = parseInt(qtyEl.textContent);
+
+          if (e.target.closest(".qty-plus")) {
+            qty++;
+            qtyEl.textContent = qty;
+            recalcCart();
+          } else if (e.target.closest(".qty-minus")) {
+            if (qty > 1) {
+              qty--;
+              qtyEl.textContent = qty;
+              recalcCart();
+            }
+          } else if (e.target.closest(".sp-delete")) {
+            row.style.animation = "rowOut 0.25s ease forwards";
+            setTimeout(() => {
+              row.remove();
+              recalcCart();
+            }, 240);
+          }
+        });
+
+      // ─── Payment Tabs ───
+      const uTabs = document.querySelectorAll(".u-tab");
+      const uPanels = document.querySelectorAll(".u-panel");
+      uTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          uTabs.forEach((t) => t.classList.remove("active"));
+          uPanels.forEach((p) => p.classList.remove("active"));
+          tab.classList.add("active");
+          document
+            .getElementById(tab.getAttribute("data-target"))
+            .classList.add("active");
+        });
+      });
+
+      // ─── Card Auto-Format ───
+      document.getElementById("card-number").addEventListener("input", (e) => {
+        let val = e.target.value.replace(/\D/g, "").slice(0, 16);
+        e.target.value = val.replace(/(.{4})/g, "$1 ").trim();
+      });
+      document.getElementById("card-expiry").addEventListener("input", (e) => {
+        let val = e.target.value.replace(/\D/g, "").slice(0, 4);
+        if (val.length >= 3) val = val.slice(0, 2) + " / " + val.slice(2);
+        e.target.value = val;
+      });
+
+      // ─── Restrict fields to letters/spaces in real-time ───
+      ["co-fname", "co-lname", "co-state", "co-city", "card-name"].forEach(
+        (id) => {
+          const el = document.getElementById(id);
+          if (el)
+            el.addEventListener("input", () => {
+              el.value = el.value.replace(/[^a-zA-Z\s]/g, "");
+            });
+        },
+      );
+
+      // ─── Strict Filter & Length Limiter for Numeric Fields ───
+      const coPhone = document.getElementById("co-phone");
+      if (coPhone) {
+        coPhone.addEventListener("input", function () {
+          this.value = this.value.replace(/\D/g, "").slice(0, 10);
+        });
+      }
+
+      const coZip = document.getElementById("co-zip");
+      if (coZip) {
+        coZip.addEventListener("input", function () {
+          this.value = this.value.replace(/\D/g, "").slice(0, 6);
+        });
+      }
+
+      const cardCvv = document.getElementById("card-cvv");
+      if (cardCvv) {
+        cardCvv.addEventListener("input", function () {
+          this.value = this.value.replace(/\D/g, "").slice(0, 4);
+        });
+      }
+
+      const upiId = document.getElementById("upi-id");
+      if (upiId) {
+        upiId.addEventListener("input", function () {
+          this.value = this.value.replace(/\s/g, ""); // Block spaces in UPI
+        });
+      }
+
+      // ─── Validation helpers ───
+      function setError(id, msg) {
+        const errEl = document.getElementById(id);
+        if (!errEl) return;
+        errEl.textContent = msg;
+        const inp = errEl.closest(".fs-group")?.querySelector(".fs-input");
+        if (inp) inp.classList.add("input-error");
+      }
+      function clearErrors() {
+        document
+          .querySelectorAll(".field-error")
+          .forEach((e) => (e.textContent = ""));
+        document
+          .querySelectorAll(".input-error")
+          .forEach((e) => e.classList.remove("input-error"));
+      }
+
+      const isLetters = (str) => /^[a-zA-Z\s]+$/.test(str.trim());
+      const isEmail = (str) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str.trim());
+      const isZip = (str) => /^\d{6}$/.test(str.trim());
+      const isPhone = (str) => /^\d{10}$/.test(str.trim());
+      const isCVV = (str) => /^\d{3,4}$/.test(str.trim());
+      const isUpi = (str) =>
+        /^[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}$/.test(str.trim());
+
+      // ─── Form Submit ───
+      document
+        .getElementById("checkout-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          clearErrors();
+          let ok = true;
+
+          // Cart must have items
+          if (document.querySelectorAll(".summary-product").length === 0) {
+            alert(
+              "Your cart is empty. Please add products before checking out.",
+            );
+            return;
+          }
+
+          const v = (id, check, errId, msg) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (!check(el.value)) {
+              setError(errId, msg);
+              ok = false;
+            }
+          };
+
+          v(
+            "co-email",
+            (s) => s.trim() && isEmail(s),
+            "err-email",
+            "Enter a valid email address.",
+          );
+          v(
+            "co-fname",
+            (s) => s.trim() && isLetters(s),
+            "err-fname",
+            "First name — letters only.",
+          );
+          v(
+            "co-lname",
+            (s) => s.trim() && isLetters(s),
+            "err-lname",
+            "Last name — letters only.",
+          );
+          v(
+            "co-address",
+            (s) => s.trim().length >= 5,
+            "err-address",
+            "Enter a valid street address.",
+          );
+          v(
+            "co-city",
+            (s) => s.trim() && isLetters(s),
+            "err-city",
+            "City — letters only.",
+          );
+          v(
+            "co-state",
+            (s) => s.trim() && isLetters(s),
+            "err-state",
+            "State — letters only.",
+          );
+          v("co-zip", (s) => isZip(s), "err-zip", "Enter exactly 6 digits.");
+          v(
+            "co-phone",
+            (s) => isPhone(s),
+            "err-phone",
+            "Enter exactly 10 digits.",
+          );
+
+          const activeTab = document.querySelector(".u-tab.active");
+          const gw = activeTab
+            ? activeTab.getAttribute("data-target")
+            : "panel-card";
+
+          if (gw === "panel-card") {
+            const digits = document
+              .getElementById("card-number")
+              .value.replace(/\s/g, "");
+            if (!digits || !/^\d{13,16}$/.test(digits)) {
+              setError(
+                "err-card-number",
+                "Enter a valid 13–16 digit card number.",
+              );
+              ok = false;
+            }
+            if (
+              !/^(0[1-9]|1[0-2])\s*\/\s*\d{2}$/.test(
+                document.getElementById("card-expiry").value.trim(),
+              )
+            ) {
+              setError("err-card-expiry", "Use format MM / YY.");
+              ok = false;
+            }
+            if (!isCVV(document.getElementById("card-cvv").value.trim())) {
+              setError("err-card-cvv", "CVV must be 3 or 4 digits.");
+              ok = false;
+            }
+            const cn = document.getElementById("card-name");
+            if (!cn.value.trim() || !isLetters(cn.value)) {
+              setError("err-card-name", "Name on card — letters only.");
+              ok = false;
+            }
+          } else {
+            const upi = document.getElementById("upi-id");
+            if (!isUpi(upi.value.trim())) {
+              setError("err-upi-id", "Enter a valid UPI ID (e.g. name@bank).");
+              ok = false;
+            }
+          }
+
+          if (!ok) {
+            const firstErr = document.querySelector(".field-error:not(:empty)");
+            if (firstErr)
+              firstErr.scrollIntoView({ behavior: "smooth", block: "center" });
+            return;
+          }
+
+          const btn = document.getElementById("pay-now-btn");
+          const loader = document.getElementById("page-loader");
+          btn.disabled = true;
+          btn.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+          loader.style.display = "flex";
+          setTimeout(() => {
+            loader.style.opacity = "1";
+          }, 10);
+          setTimeout(() => {
+            window.location.href = "./error.html";
+          }, 1200);
+        });
+
+      // ─── Footer Newsletter ───
+      document
+        .getElementById("footer-newsletter-form")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          const em = document.getElementById("newsletter-email");
+          const err = document.getElementById("newsletter-error");
+          err.innerText = "";
+          em.style.borderColor = "";
+          if (!em.value.trim()) {
+            err.innerText = "Email is required";
+            em.style.borderColor = "var(--error-color)";
+          } else if (!isEmail(em.value)) {
+            err.innerText = "Please enter a valid email address";
+            em.style.borderColor = "var(--error-color)";
+          } else {
+            const loader = document.getElementById("page-loader");
+            loader.style.display = "flex";
+            setTimeout(() => {
+              loader.style.opacity = "1";
+            }, 10);
+            setTimeout(() => {
+              window.location.href = "./error.html";
+            }, 400);
+          }
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,586 @@
+/* ============================================================
+   about.css  —  FurniStyle About Us Page Styles
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 1: HERO CAROUSEL
+══════════════════════════════════════════════════════════ */
+.about-main {
+    padding-top: 80px;
+    /* offset for header */
+}
+
+.about-hero {
+    position: relative;
+    width: 100%;
+    min-height: 700px;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.about-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.about-slide.slide-active {
+    opacity: 1;
+}
+
+.about-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    color: #ffffff;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    min-height: 60px;
+    /* Space for typing so layout doesn't jump */
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.hero-content p {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+    min-height: 60px;
+    /* Space for typing */
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Stats Row */
+.stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-num {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent-teal);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .stats-row {
+        gap: 30px;
+    }
+
+    .stat-num {
+        font-size: 2.2rem;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 2: OUR TEAM GRID
+══════════════════════════════════════════════════════════ */
+.team-section {
+    background: var(--bg-card);
+    padding: 100px 0;
+}
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.section-heading {
+    margin-bottom: 60px;
+}
+
+.subheading {
+    display: inline-block;
+    color: var(--accent-teal);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.section-heading h2 {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 16px;
+}
+
+/* 3 Person Grid Structure */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 400px;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+}
+
+.team-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    transition: transform 0.6s ease;
+    filter: brightness(0.8);
+}
+
+/* Uniform Sizing (Override any spans if old classes linger) */
+.team-card {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/* Overlay Info */
+.team-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 30px 30px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 60%, transparent 100%);
+    color: #fff;
+    transform: translateY(40px);
+    transition: transform 0.4s ease;
+}
+
+.team-info h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.team-info .role {
+    color: var(--accent-teal);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-info .bio {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.1s;
+    display: block;
+    /* Always let it be in DOM, just invisible */
+}
+
+/* Social Links */
+.team-social {
+    display: flex;
+    gap: 15px;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.2s;
+}
+
+.team-social a {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    backdrop-filter: blur(5px);
+}
+
+.team-social a:hover {
+    background: var(--accent-teal);
+    transform: translateY(-2px);
+}
+
+/* Hover Effects */
+.team-card:hover img {
+    transform: scale(1.05);
+}
+
+.team-card:hover .team-info {
+    transform: translateY(0);
+}
+
+.team-card:hover .bio,
+.team-card:hover .team-social {
+    opacity: 1;
+}
+
+/* Responsive Team Grid */
+@media (max-width: 992px) {
+    .team-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .team-card {
+        width: calc(50% - 20px);
+        height: 380px;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .team-card {
+        width: 100%;
+        max-width: 380px;
+        height: 350px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 3: MISSION & VISION (GSAP Split layout)
+══════════════════════════════════════════════════════════ */
+.mission-vision {
+    background: var(--bg-rich);
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.gs-split-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 60px;
+    position: relative;
+    max-width: 1100px;
+}
+
+.gs-center-divider {
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--border-light), var(--accent-teal), var(--border-light), transparent);
+    flex-shrink: 0;
+}
+
+.gs-left,
+.gs-right {
+    flex: 1;
+    padding: 40px 0;
+}
+
+.gs-left {
+    text-align: right;
+}
+
+.gs-right {
+    text-align: left;
+}
+
+.mv-block h2 {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.mv-block p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.mv-icon {
+    font-size: 2.5rem;
+    color: var(--accent-teal);
+    margin-bottom: 25px;
+}
+
+/* Responsive Split */
+@media (max-width: 850px) {
+    .gs-split-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .gs-left,
+    .gs-right {
+        text-align: center;
+    }
+
+    .gs-center-divider {
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to right, transparent, var(--border-light), var(--accent-teal), var(--border-light), transparent);
+    }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 4: COMPANY HISTORY
+══════════════════════════════════════════════════════════ */
+.history-section {
+    position: relative;
+    padding: 120px 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Fixed Parallax Image */
+.history-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/About/Bg/bgIm.webp') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    /* Essential for Parallax */
+    z-index: 0;
+}
+
+.history-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.85);
+    /* Rich dark blend over image */
+    z-index: 1;
+}
+
+body.light-theme .history-overlay {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.history-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline-wrapper {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    border-left: 2px solid var(--accent-teal);
+    padding-left: 30px;
+    margin-left: 20px;
+}
+
+.timeline-item {
+    position: relative;
+}
+
+/* The timeline Node */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -39px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 3px solid var(--accent-teal);
+}
+
+.timeline-item .year {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--accent-teal);
+    margin-bottom: 10px;
+}
+
+.timeline-details h3 {
+    font-size: 1.4rem;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.timeline-details p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION 5: TESTIMONIALS (Carousel Pictureless)
+══════════════════════════════════════════════════════════ */
+.testimonials-section {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-light);
+    overflow: hidden;
+    /* Constrain infinite carousel */
+}
+
+.test-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 50px;
+    padding-bottom: 20px;
+}
+
+.test-carousel-track {
+    display: flex;
+    width: max-content;
+    gap: 30px;
+}
+
+/* Fading edges effect for the carousel container */
+.test-carousel-wrapper::before,
+.test-carousel-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.test-carousel-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-card), transparent);
+}
+
+.test-carousel-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-card), transparent);
+}
+
+.test-card-new {
+    background: var(--bg-rich);
+    width: 450px;
+    padding: 45px 35px;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.test-card-new:hover {
+    border-color: var(--accent-teal);
+    box-shadow: 0 10px 30px rgba(13, 148, 136, 0.1);
+}
+
+.quote-icon {
+    font-size: 2.2rem;
+    color: var(--accent-teal);
+    opacity: 0.5;
+    margin-bottom: 25px;
+}
+
+.test-text {
+    font-style: italic;
+    color: var(--text-main);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.test-author-name {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .test-card-new {
+        width: 320px;
+        padding: 30px 25px;
+    }
+
+    .test-carousel-wrapper::before,
+    .test-carousel-wrapper::after {
+        width: 40px;
+    }
+}
+
+/* --- General Simple Fade Utility --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
