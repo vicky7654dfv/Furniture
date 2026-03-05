@@ -444,6 +444,14 @@
             setTimeout(() => { loader.style.display = 'none'; }, 300);
         });
 
+        // Fix for bfcache (back button) on GitHub Pages: "load" doesn't fire on bfcache restore
+        window.addEventListener('pageshow', (e) => {
+            if (e.persisted) {
+                const loader = document.getElementById('page-loader');
+                if (loader) { loader.style.opacity = '0'; loader.style.display = 'none'; }
+            }
+        });
+
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');

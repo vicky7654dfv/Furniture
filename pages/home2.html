@@ -403,6 +403,13 @@
                 setTimeout(() => { loader.style.display = 'none'; }, 400);
             });
 
+            // Fix for bfcache (back button) on GitHub Pages
+            window.addEventListener('pageshow', (e) => {
+                if (e.persisted) {
+                    if (loader) { loader.style.opacity = '0'; loader.style.display = 'none'; }
+                }
+            });
+
             /* ── Page-transition on link clicks ── */
             document.querySelectorAll('a[href]').forEach(link => {
                 link.addEventListener('click', function (e) {
