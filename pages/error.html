@@ -2,39 +2,59 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 | Page Not Found</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/error.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 | Page Not Found</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/error.css">
 </head>
 
 <body>
-    <div class="error-wrapper">
-        <div class="ambient-glow"></div>
-        
-        <main class="error-content">
-            <div class="error-code" aria-label="404 Error">404</div>
-            
-            <div class="text-container fade-in">
-                <h1 class="error-title">This space is currently unfurnished.</h1>
-                <p class="error-desc">
-                    The collection or specific piece you are searching for has been moved, discontinued, or simply doesn't exist in our current catalog.
-                </p>
-                
-                <a href="../index.html" class="btn-home">Return to Home</a>
-            </div>
-        </main>
-    </div>
 
-    <script>
-        // Simple fade-in script to ensure smooth loading
-        window.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('.error-content').classList.add('loaded');
-        });
-    </script>
+<div class="error-wrapper">
+<div class="ambient-glow"></div>
+
+<main class="error-content">
+
+<div class="error-code">404</div>
+
+<div class="text-container">
+
+<h1 class="error-title">
+This space is currently unfurnished.
+</h1>
+
+<p class="error-desc">
+The collection or specific piece you are searching for has been moved, discontinued, or simply doesn't exist in our current catalog.
+</p>
+
+<a href="../index.html" class="btn-home" onclick="goHome(event)">
+Return to Home
+</a>
+
+</div>
+
+</main>
+</div>
+
+<script>
+
+window.addEventListener("DOMContentLoaded", () => {
+const el = document.querySelector(".error-content");
+if(el) el.classList.add("loaded");
+});
+
+function goHome(e){
+e.preventDefault();
+window.location.replace("../index.html");
+}
+
+</script>
+
 </body>
-
 </html>
