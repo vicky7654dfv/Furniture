@@ -33,7 +33,7 @@ This space is currently unfurnished.
 The collection or specific piece you are searching for has been moved, discontinued, or simply doesn't exist in our current catalog.
 </p>
 
-<a href="../index.html" class="btn-home" onclick="goHome(event)">
+<a href="../index.html" class="btn-home">
 Return to Home
 </a>
 
@@ -45,14 +45,9 @@ Return to Home
 <script>
 
 window.addEventListener("DOMContentLoaded", () => {
-const el = document.querySelector(".error-content");
+const el=document.querySelector(".error-content");
 if(el) el.classList.add("loaded");
 });
-
-function goHome(e){
-e.preventDefault();
-window.location.replace("../index.html");
-}
 
 </script>
 
